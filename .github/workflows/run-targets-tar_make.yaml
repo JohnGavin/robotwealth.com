@@ -80,7 +80,7 @@ jobs:
             'targets::tar_make(
               callr_function = NULL,
               script = \"exp_ret_mdl.R\",
-              store = \"exp_ret_mdl_store\")'"
+              store =  \"exp_ret_mdl_store\")'"
       - name: Identify files that the targets pipeline produced
         run: git ls-files -mo --exclude=renv > .targets-files
 
