@@ -27,9 +27,13 @@ Imports:
     glue,
     here,
     lmtest,
+    lubridate,
+    pacman,
     patchwork,
     roll,
     sandwich,
     tarchetypes,
     tibbletime,
     tidyfit
+Depends: 
+    R (>= 4.3)
