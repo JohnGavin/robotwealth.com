@@ -1,0 +1,39 @@
+Package: robotwealth.com
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: What the package does (one paragraph).
+License: file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+URL: https://github.com/JohnGavin/robotwealth.com
+BugReports: https://github.com/JohnGavin/robotwealth.com/issues
+Suggests: 
+    devtools,
+    dplyr,
+    ggplot2,
+    purrr,
+    readr,
+    stringr,
+    targets,
+    testthat,
+    tibble,
+    tidyr
+Imports: 
+    fs,
+    glue,
+    here,
+    lmtest,
+    lubridate,
+    pacman,
+    patchwork,
+    roll,
+    sandwich,
+    tarchetypes,
+    tibbletime,
+    tidyfit
+Depends: 
+    R (>= 4.3)
