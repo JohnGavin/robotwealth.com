@@ -35,7 +35,7 @@ jobs:
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
-    
+
       - uses: actions/checkout@v3
 
       - name: Install Nix
@@ -51,46 +51,46 @@ jobs:
       - name: Build development environment
         run: |
           nix-build
-          
+
       - name: Check if previous runs exists
         id: runs-exist
-        run: git ls-remote --exit-code --heads origin targets-runs
+        run: git ls-remote --exit-code --heads origin targets-tar_make
         continue-on-error: true
 
       - name: Checkout previous run
         if: steps.runs-exist.outcome == 'success'
         uses: actions/checkout@v2
         with:
-          ref: targets-runs
+          ref: targets-tar_make
           fetch-depth: 1
-          path: .targets-runs
+          path: .targets-tar_make
 
       - name: Restore output files from the previous run
         if: steps.runs-exist.outcome == 'success'
         run: |
-          nix-shell default.nix --run "Rscript -e 'for (dest in scan(\".targets-runs/.targets-files\", what = character())) {
-            source <- file.path(\".targets-runs\", dest)
+          nix-shell default.nix --run "Rscript -e 'for (dest in scan(\".targets-tar_make/.targets-files\", what = character())) {
+            source <- file.path(\".targets-tar_make\", dest)
             if (!file.exists(dirname(dest))) dir.create(dirname(dest), recursive = TRUE)
             if (file.exists(source)) file.rename(source, dest)
           }'"
 
       - name: Run model
         run: |
-          nix-shell default.nix --run "Rscript -e 'targets::tar_make()'"
+          nix-shell default.nix --run "Rscript -e 'tar_make(callr_function = NULL, script = \"exp_ret_mdl.R\", store = \"exp_ret_mdl_store\")'"
 
       - name: Identify files that the targets pipeline produced
         run: git ls-files -mo --exclude=renv > .targets-files
 
       - name: Create the runs branch if it does not already exist
         if: steps.runs-exist.outcome != 'success'
-        run: git checkout --orphan targets-runs
+        run: git checkout --orphan targets-tar_make
 
       - name: Put the worktree in the runs branch if the latter already exists
         if: steps.runs-exist.outcome == 'success'
         run: |
           rm -r .git
-          mv .targets-runs/.git .
-          rm -r .targets-runs
+          mv .targets-tar_make/.git .
+          rm -r .targets-tar_make
 
       - name: Upload latest run
         run: |
@@ -103,11 +103,11 @@ jobs:
             git add --force $file
           done
           git commit -am "Run pipeline"
-          git push origin targets-runs
+          git push origin targets-tar_make
 
       - name: Prepare failure artifact
         if: failure()
-        run: rm -rf .git .github .targets-files .targets-runs
+        run: rm -rf .git .github .targets-files .targets-tar_make
 
       - name: Post failure artifact
         if: failure()

@@ -226,6 +226,10 @@ tar_make(
   script = pr_script, store = pr_store,
   reporter = c("summary", "verbose")[2]
 )
+# nix-shell default.nix --run \
+# "Rscript -e 'tar_make(callr_function = NULL, \
+#   script = \"exp_ret_mdl.R\",
+#   store  = \"exp_ret_mdl_store\")'"
 # tar_process(tar_process()$value[1])
 # tar_invalidate / tar_destroy("local")
 # tar_meta(targets_only = TRUE) %>% glimpse()
