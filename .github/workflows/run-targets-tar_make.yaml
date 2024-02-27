@@ -59,7 +59,7 @@ jobs:
 
       - name: Checkout previous run
         if: steps.runs-exist.outcome == 'success'
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           ref: targets-tar_make
           fetch-depth: 1
