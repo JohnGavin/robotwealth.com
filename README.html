@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>robotweath.com blogs</title>
+<title>robotweath.com blogs &amp; {targets} pipeline</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">robotweath.com blogs</h1>
+<h1 class="title">robotweath.com blogs &amp; <code>{targets}</code> pipeline</h1>
 </div>
 
 
@@ -96,77 +96,123 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md is generated from README.qmd. Please edit that file -->
 <section id="robotwealth.com" class="level1">
 <h1>robotwealth.com</h1>
 <!-- badges: start -->
 <!-- badges: end -->
-<p>The goal of robotwealth.com is to walk through a blog post from robotwealth.com. + https://robotwealth.com/how-to-model-features-as-expected-returns/</p>
+<p>The goal of robotwealth.com is build a <code>{targets}</code> pipeline of a blog post from robotwealth.com.</p>
+<ul>
+<li>https://robotwealth.com/how-to-model-features-as-expected-returns/</li>
+</ul>
+</section>
+<section id="expected-return-models" class="level1">
+<h1>expected return models</h1>
+<p>./R/robotwealth.com/expected_returns_models.R</p>
+<ul>
+<li>features ~ expected returns
+<ul>
+<li>objective
+<ul>
+<li>predict then capitalise on future returns</li>
+</ul></li>
+<li>intuitive optimisation and implementation</li>
+<li>direct comparison of features</li>
+<li>framework to add/eval old/new signals</li>
+</ul></li>
+<li>common <em>risk</em> models
+<ul>
+<li>e.g.&nbsp;covariance estimates</li>
+</ul></li>
+<li>expected return &amp; risk models
+<ul>
+<li>direct comparison with trading costs</li>
+<li>optimisation techniques to trade-off
+<ul>
+<li>return, risk, and turnover given constraints</li>
+</ul></li>
+</ul></li>
+</ul>
 <section id="installation" class="level2">
 <h2 class="anchored" data-anchor-id="installation">Installation</h2>
 <p>Install the development version of robotwealth.com from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("devtools")</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"JohnGavin/robotwealth.com"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("devtools")</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"JohnGavin/robotwealth.com"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="project-structure" class="level2">
 <h2 class="anchored" data-anchor-id="project-structure">Project structure</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: add Project structure tree to readme</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_tree</span>()</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; .</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── DESCRIPTION</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── LICENSE</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── LICENSE.md</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── NAMESPACE</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── R</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── robotwealth.com-package.R</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── robotwealth.com_calc_sharpe.R</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── robotwealth.com_ggplot_equity_curve.R</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── robotwealth.com_tar_config_set_project.R</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── scripts</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   │   ├── convex-optimisation-with-cvxr.R</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   │   ├── expected_returns_models_2.R</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   │   ├── old</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   │   │   ├── expected_returns_models.R</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   │   │   └── expected_returns_models_1.5.R</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   │   └── turnover_costs.R</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── tar_plans</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │       ├── plan__preamble.R</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │       └── robotwealth.com</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │           ├── old</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │           │   └── tar_06_tidymodels.R</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │           ├── tar_01_data.R</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │           ├── tar_02_universe.R</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │           ├── tar_03_features.R</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │           ├── tar_04_features_deciles.R</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │           ├── tar_05_tidymodels.R</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │           └── tar_06_feat_evol.R</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── README.qmd</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── README.rmarkdown</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── data-raw</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── DATASET.R</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── default.nix</span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── result</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; └── robotwealth.com.Rproj</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>#&gt; .
+#&gt; ├── DESCRIPTION
+#&gt; ├── LICENSE
+#&gt; ├── NAMESPACE
+#&gt; ├── R
+#&gt; │   ├── get_symbols_stables_llama.R
+#&gt; │   ├── robotwealth.com-package.R
+#&gt; │   ├── robotwealth.com_calc_sharpe.R
+#&gt; │   ├── robotwealth.com_ggplot_equity_curve.R
+#&gt; │   ├── robotwealth.com_tar_config_set_project.R
+#&gt; │   ├── scripts
+#&gt; │   │   ├── convex-optimisation-with-cvxr.R
+#&gt; │   │   ├── expected_returns_models.R
+#&gt; │   │   └── turnover_costs.R
+#&gt; │   └── tar_plans
+#&gt; │       ├── plan__preamble.R
+#&gt; │       └── robotwealth.com
+#&gt; │           ├── tar_01_data.R
+#&gt; │           ├── tar_02_universe.R
+#&gt; │           ├── tar_03_features.R
+#&gt; │           ├── tar_04_features_deciles.R
+#&gt; │           ├── tar_05_tidymodels.R
+#&gt; │           └── tar_06_feat_evol.R
+#&gt; ├── README.qmd
+#&gt; ├── README.rmarkdown
+#&gt; ├── data-raw
+#&gt; │   └── DATASET.R
+#&gt; ├── default.nix
+#&gt; ├── exp_ret_mdl.R
+#&gt; ├── exp_ret_mdl.yaml
+#&gt; ├── exp_ret_mdl_store
+#&gt; │   └── user
+#&gt; ├── man
+#&gt; │   ├── calc_sharpe.Rd
+#&gt; │   ├── figures
+#&gt; │   ├── ggplot_equity_curve.Rd
+#&gt; │   ├── robotwealth.com-package.Rd
+#&gt; │   └── tar_config_set_project.Rd
+#&gt; ├── result
+#&gt; ├── robotwealth.com.Rproj
+#&gt; └── sub_shell
+#&gt;     └── default.nix
+#&gt; # A tibble: 41 × 3
+#&gt;    path                                                         size modify_date
+#&gt;    &lt;fs::path&gt;                                            &lt;fs::bytes&gt; &lt;date&gt;     
+#&gt;  1 R/scripts/turnover_costs.R                                  14.9K 2024-02-26 
+#&gt;  2 R/tar_plans/robotwealth.com/tar_06_feat_evol.R              9.54K 2024-02-26 
+#&gt;  3 R/tar_plans/plan__preamble.R                                8.97K 2024-02-23 
+#&gt;  4 R/scripts/expected_returns_models.R                         8.66K 2024-02-27 
+#&gt;  5 R/scripts/convex-optimisation-with-cvxr.R                   5.89K 2024-02-28 
+#&gt;  6 R/tar_plans/robotwealth.com/tar_05_tidymodels.R             4.08K 2024-02-26 
+#&gt;  7 R/tar_plans/robotwealth.com/tar_04_features_deciles.R       3.51K 2024-02-26 
+#&gt;  8 default.nix                                                 2.84K 2024-02-27 
+#&gt;  9 sub_shell/default.nix                                       2.81K 2024-02-27 
+#&gt; 10 README.rmarkdown                                            2.42K 2024-02-28 
+#&gt; # ℹ 31 more rows</code></pre>
 </div>
 </section>
 <section id="example" class="level2">
 <h2 class="anchored" data-anchor-id="example">Example</h2>
 <p>This is a basic example which shows you how to solve a common problem:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(robotwealth.com)</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="do">## basic example code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <p>What is special about using <code>README.Rmd</code> instead of just <code>README.md</code>? You can include R chunks like so:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cars)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      speed           dist       </span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Min.   : 4.0   Min.   :  2.00  </span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1st Qu.:12.0   1st Qu.: 26.00  </span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Median :15.0   Median : 36.00  </span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Mean   :15.4   Mean   : 42.98  </span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.:19.0   3rd Qu.: 56.00  </span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Max.   :25.0   Max.   :120.00</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>#&gt;      speed           dist       
+#&gt;  Min.   : 4.0   Min.   :  2.00  
+#&gt;  1st Qu.:12.0   1st Qu.: 26.00  
+#&gt;  Median :15.0   Median : 36.00  
+#&gt;  Mean   :15.4   Mean   : 42.98  
+#&gt;  3rd Qu.:19.0   3rd Qu.: 56.00  
+#&gt;  Max.   :25.0   Max.   :120.00</code></pre>
 </div>
 <p>You’ll still need to render <code>README.Rmd</code> regularly, to keep <code>README.md</code> up-to-date. <code>devtools::build_readme()</code> is handy for this.</p>
 <p>You can also embed plots, for example:</p>
