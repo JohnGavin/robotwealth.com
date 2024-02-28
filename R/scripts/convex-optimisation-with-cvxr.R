@@ -7,20 +7,20 @@
 #   modelled signals as expected returns
 # maximise your expected returns subject to
 #   limits
-#   positions concentrated 
-#   net long or short 
+#   positions concentrated
+#   net long or short
 #   leverage
-#   
+#
 # no-trade buffer - hysteresis
-# only rebalance positions 
+# only rebalance positions
 #  if position > percentage of your target
 #  https://robotwealth.com/a-simple-effective-way-to-manage-turnover-and-not-get-killed-by-costs/
-#  
+#
 #  real-world constraints directly
-# incl risk models 
+# incl risk models
 # e.g. covariance estimates, Value-at-Risk, etc
-# flexible and scalable: 
-#   add new signals or 
+# flexible and scalable:
+#   add new signals or
 #   risk estimates without re-fitting anything?
 
 pacman::p_load( # dev pkgs ----
@@ -41,7 +41,7 @@ tar_config_set_project(
   pr_script = pr_script,
   pr_store = pr_store
 )
-tar_config_projects() # new (pr_title) project in .yaml config file 
+tar_config_projects() # new (pr_title) project in .yaml config file
 readLines(pr_yaml)
 rm(pr_yaml, pr_title)
 
@@ -53,23 +53,23 @@ targets::tar_script(
     # session options ----
     options(repr.plot.width = 14, repr.plot.height = 7, warn = -1)
     pacman::p_load( # _project_ packages ----
-      # user objective and set of constraints 
-      # by combining CVXR objects representing 
+      # user objective and set of constraints
+      # by combining CVXR objects representing
       # constants, variables, and parameters
-      CVXR, 
+      CVXR,
       tarchetypes, fs,
       glue, here,
-      # from tidyverse, 
+      # from tidyverse,
       lubridate, stringr, dplyr, purrr, readr, tidyr, tibble, ggplot2, #  tidyverse, lubridate forcats
       tibbletime, roll, patchwork, rsims
     )
-    pacman::p_load_current_gh("Robot-Wealth/rsims", 
+    pacman::p_load_current_gh("Robot-Wealth/rsims",
       dependencies = TRUE)
     # ggplot chart options ----
     options(repr.plot.width = 14, repr.plot.height=7, warn = -1)
     theme_set(theme_bw())
     theme_update(text = element_text(size = 20))
-    
+
     # script parameters ----
 
     prms_sim <- list( #----
@@ -88,23 +88,23 @@ targets::tar_script(
     # script functions ----
 
     # TODO: ? move relevant .R/functions to ./R/expected_returns_models/?
-    source_dir_only <- function(path_rel = "R"){ 
+    source_dir_only <- function(path_rel = "R"){
       fs::path_abs(path_rel) %>%
         fs::dir_ls(regexp = "\\.R$") %>%
-        str_subset("^zzz.[Rr]$|_targets.[Rr]$", negate = TRUE) %>%
+        str_subset("^zzz\\.[Rr]$|_targets\\.[Rr]$", negate = TRUE) %>%
         walk(source) # %>% invisible()
-      # was 
+      # was
       # '^[^_].+\\.R$' %>% # excl ./R/_targets.R
       #   list.files(path = "R", pattern = .) %>%
       #   walk(source)
     }
     source_dir_only("R")
-    
+
     # tar_plan ----
     # incl .R functions from ./R/tar_plans/robotwealth.com
     #   not recursively tar_source(... cos of 'old' folder
     source_dir_only("R/tar_plans/robotwealth.com")
-    
+
     tar_prms <- tar_plan(#----
       prms = {
         ans <- list(
@@ -124,7 +124,7 @@ targets::tar_script(
     tar_not_prms <- tar_plan(#----
       x = prms$max_ts_pos
     ) # tar_not_prms
-    
+
     c(
       tar_prms,
       tar_not_prms
@@ -139,7 +139,7 @@ tar_outdated() %>% str()
 tar_progress() %>% pull(progress) %>% table() %>% sort()
 # targets::tar_invalidate(a_data_from_n_sim)
 tar_visnetwork(
-  names = 
+  names =
     !ends_with('_[0-9a-z]{8}') & # dynamic targets
     !starts_with('gg_') & # ggplot2
     !starts_with('df_') & # data.frame / tibble
@@ -158,10 +158,10 @@ tar_make(
 stopifnot(identical(tar_objects(), tar_objects(store = pr_store)))
 # only load non-branch objects
 # FAILS for gg_eq_curve_2 cos 1 digit or letter ok
-regex_target_branch <- 
+regex_target_branch <-
   # _ + 1 digit or letter ok
   "_[a-z\\d]{8}$" # almost works / gg_stepwise fails
-# "_[(a-z)(\\d)]{8}$" 
+# "_[(a-z)(\\d)]{8}$"
 # "^.+_[0-9a-z]{[0-9a-z]{8}.+$"
 # "^.+_[0-9a-z][0-9a-z].+$"
 #"^.*_(?=.*[0-9])(?=.*[a-z]).+$" # fails gg_eq_curve_1
