@@ -1,5 +1,6 @@
 .targets-files
 .targets-tar_make/
+_targets.yaml
 exp_ret_mdl_store/meta/process
 exp_ret_mdl_store/meta/progress
 exp_ret_mdl_store/objects/aprms

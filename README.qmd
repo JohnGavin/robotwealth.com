@@ -1,6 +1,11 @@
 ---
-title: robotweath.com blogs 
+title: robotweath.com blogs & `{targets}` pipeline
 output: github_document
+format:
+  html:
+    code-fold: true
+execute:
+  echo: false
 ---
 
 <!-- README.md is generated from README.qmd. Please edit that file -->
@@ -20,8 +25,29 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of robotwealth.com is to walk through a blog post from robotwealth.com.
+The goal of robotwealth.com is build a 
+`{targets}` 
+pipeline of a blog post from robotwealth.com.
+
 + https://robotwealth.com/how-to-model-features-as-expected-returns/
+
+# expected return models
+./R/robotwealth.com/expected_returns_models.R
+
++ features ~ expected returns 
+  + objective 
+    + predict then capitalise on future returns
+  + intuitive optimisation and implementation 
+  + direct comparison of features 
+  + framework to add/eval old/new signals
++ common _risk_ models 
+  + e.g. covariance estimates
++ expected return & risk models
+  + direct comparison with trading costs
+  + optimisation techniques to trade-off 
+    + return, risk, and turnover given constraints
+
+
 
 ## Installation
 
@@ -33,19 +59,36 @@ devtools::install_github("JohnGavin/robotwealth.com")
 ```
 
 ## Project structure 
-```{r}
-# TODO: add Project structure tree to readme
-fs::dir_tree()
+### Project structure tree
+```{r tree}
+pacman::p_load(dplyr, stringr, fs)
+regex <- "(objects)|[.](md)|[.](htm)|[.](png)|(files)|(meta)|(old)"
+regex %>% 
+  fs::dir_tree(regexp = ., invert = T, recurse = T)
+```
+
+
+```{r dir_info}
+"." %>% 
+  dir_info(recurse = T) %>% 
+  mutate(modify_date =
+    as.Date(modification_time)) %>% 
+  select(path, size, modify_date) %>% 
+  filter(path %>% 
+    str_detect(pattern = regex, negate = T)) %>% 
+   arrange(desc(size))
 ```
 
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
-
 ```{r example}
 # library(robotwealth.com)
-## basic example code
+pacman::p_load(targets)
+## basic example
+tar_make(
+  
+)
 ```
 
 What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:

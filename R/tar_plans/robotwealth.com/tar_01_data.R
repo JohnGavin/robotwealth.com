@@ -1,6 +1,6 @@
 # sourced in ~/Documents_GitHub/duckdb_arrow_sql/R/robotwealth.com/expected_returns_models.R
- 
-tar_data <- tar_plan( # rlang::list2( ---- 
+
+tar_data <- tar_plan( # rlang::list2( ----
   tar_target(aprms, prms),
   # two data sources
   # 1/2) csv: perpetual futures contracts
@@ -27,6 +27,8 @@ tar_data <- tar_plan( # rlang::list2( ----
     get_symbols_stables_llama(url_stables_llama),
     pattern = map(url_csv)
   ),
+  # TODO: move stables_llama to package dataset
+  # ./data-raw/stables_llama_df
   tar_target(stables_llama,
     stables_llama_lst %>% as.vector(),
     iteration = "vector"
