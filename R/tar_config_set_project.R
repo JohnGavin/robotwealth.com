@@ -1,15 +1,15 @@
 #' @title Adds new targets project to .yaml file
-#' @description 
+#' @description
 #' All parameters are length-one character vectors.
-#' Sets two \code{targets} environment variables: 
+#' Sets two \code{targets} environment variables:
 #' \code{TAR_PROJECT} and \code{TAR_CONFIG}.
 #' Sets target configuration via \code{tar_config_set}.
 #' Parameters are stored in top-level project folder.
 #'   \code{./<pr_yaml>.yaml}.
-#' @param pr_title project title. 
-#' @param pr_yaml project yaml,
+#' @param pr_title project title.
+#' @param pr_yaml project yaml.
 #' @param pr_script tar_script filename.
-#' @param pr_store targets db to store objects
+#' @param pr_store targets db to store objects.
 #' @return nothing returned.
 #' @author John Gavin
 #' @export

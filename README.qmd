@@ -1,53 +1,120 @@
 ---
-title: robotweath.com blogs & `{targets}` pipeline
-output: github_document
+title: pipeline for robotweath.com post
+description: targets, webR and dashboard
 format:
-  html:
-    code-fold: true
+  dashboard:
+    orientation: rows
+    theme: default
+    # expandable: true
+    # scrolling: false
+    nav-buttons:
+     # - reddit
+     - icon: gitlab
+       href: https://gitlab.com/johngavin/robotweath.com
+  # https://quarto.org/docs/output-formats/typst.html#overview
+  # ~/Documents_/note_taking_atom/projects/rix/quarto_typst.md
+  # Typst creates PDF output
+  # typst:
+  #   toc: true
+  #   section-numbering: 1.1.a
+  #   columns: 2
+  # html:
+  # https://quarto.org/docs/computations/r.html#data-frames
+  # https://quarto.org/docs/computations/r.html#output-formats
+  # paging for row/col overflow
+  #  df-print: paged
+  #   toc: true
+  #   code-fold: true
+  #   number-sections: true
+  #   css: styles.css
+  # github_document ?
+# https://quarto.org/docs/computations/r.html#output-formats
+# output: github_document/html_document # NB: OLD Rmarkdown
+filters:
+  - webr
+webr:
+  packages:
+  # CRAN packages installed when page opened
+  - "ggplot2"
+  - "dplyr" # dplyr::`%>%`
+  # - "tidyverse" # avoid to speed up pg load
+  # - "tidygraph"
+  # - "igraph"
+  # - "ggdag"
 execute:
   echo: false
+  error: true
+# embed-resources: true
+editor: source
+# Quarto with R => need rmarkdown => knitr engine
+engine: knitr
+knitr: 
+  # default document level
+  # also global Knitr options using opts_knit
+  # https://quarto.org/docs/computations/r.html#knitr-options
+  opts_chunk: 
+    # https://yihui.org/knitr/options/
+    collapse: true
+    comment: "#>"
+    # # https://quarto.org/docs/computations/execution-options.html#figure-options
+    fig.path: "man/figures/README-"
+    out.width: "100%"
+    R.options:
+      knitr.graphics.auto_pdf: true
+# https://quarto.org/docs/computations/python.html
+# jupyter: python3
 ---
 
 <!-- README.md is generated from README.qmd. Please edit that file -->
+<!---
+  enclose ALL chunks with {webr-r} - not {r}
+  then play each in webpage sequentially
+  else {r} runs locally only
+  ~/Documents_GitHub/ibrokers/vignettes/webr_dag_golem_owl.qmd
+--->
 
-```{r, include = FALSE}
-# quarto preview README.qmd --to default # --no-watch-inputs --no-browse
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
+```{r quarto cli, include = FALSE}
+# https://quarto.org/docs/computations/r.html#chunk-options
+# #| fig-cap: !expr 'paste("Air", "Quality")'
+#| eval: false
+#| collapse: true
+#| label: quarto cli
+#| echo: true
+# system(" quarto preview README.qmd --to default ") # --no-watch-inputs --no-browse
+# 
+# NB: knitr::opts_chunk$set in yaml header above
+# knitr::opts_chunk$set( # now in yaml above
+#   collapse = TRUE, comment = "#>",
+#   fig.path = "man/figures/README-",
+#   out.width = "100%")
 ```
 
 # robotwealth.com
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
-The goal of robotwealth.com is build a 
-`{targets}` 
-pipeline of a blog post from robotwealth.com.
+The goal of robotwealth.com is build a `{targets}` pipeline of a blog post from robotwealth.com.
 
-+ https://robotwealth.com/how-to-model-features-as-expected-returns/
+-   [https://robotwealth.com/how-to-model-features-as-expected-returns/]
 
 # expected return models
+
 ./R/robotwealth.com/expected_returns_models.R
 
-+ features ~ expected returns 
-  + objective 
-    + predict then capitalise on future returns
-  + intuitive optimisation and implementation 
-  + direct comparison of features 
-  + framework to add/eval old/new signals
-+ common _risk_ models 
-  + e.g. covariance estimates
-+ expected return & risk models
-  + direct comparison with trading costs
-  + optimisation techniques to trade-off 
-    + return, risk, and turnover given constraints
-
-
+-   features \~ expected returns
+    -   objective
+        -   predict then capitalise on future returns
+    -   intuitive optimisation and implementation
+    -   direct comparison of features
+    -   framework to add/eval old/new signals
+-   common *risk* models
+    -   e.g. covariance estimates
+-   expected return & risk models
+    -   direct comparison with trading costs
+    -   optimisation techniques to trade-off
+        -   return, risk, and turnover given constraints
 
 ## Installation
 
@@ -58,15 +125,21 @@ Install the development version of robotwealth.com from [GitHub](https://github.
 devtools::install_github("JohnGavin/robotwealth.com")
 ```
 
-## Project structure 
-### Project structure tree
+## Project structure
+
+### Tree structure
+
 ```{r tree}
+#| code-fold: true
+#| collapse: true
+# output: asis
 pacman::p_load(dplyr, stringr, fs)
-regex <- "(objects)|[.](md)|[.](htm)|[.](png)|(files)|(meta)|(old)"
+regex <- "(figures)|(result)|(objects)|[.](md)|[.](htm)|[.](png)|(files)|(meta)|(old)"
 regex %>% 
   fs::dir_tree(regexp = ., invert = T, recurse = T)
 ```
 
+### File sizes
 
 ```{r dir_info}
 "." %>% 
@@ -79,30 +152,86 @@ regex %>%
    arrange(desc(size))
 ```
 
+## Pipeline example
 
-## Example
+### `targets::tar_make`
 
-```{r example}
+```{r tar_make}
+#| echo: false
+#| code-fold: true
+#| collapse: true
+#| 
 # library(robotwealth.com)
 pacman::p_load(targets)
-## basic example
-tar_make(
-  
-)
+# targets setup
+scr <- "exp_ret_mdl.R"
+str <- "exp_ret_mdl_store"
+targets::tar_config_set(script = scr, store = str)
+targets::tar_make(callr_function = NULL)  
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+### Print data
 
-```{r cars}
-summary(cars)
+```{r perps_all}
+tar_read(perps_all)
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
+### Plot graphs
 
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
+```{r gg_eq_curve_1}
+# TODO: link each plot to 
+# https://robotwealth.com/how-to-model-features-as-expected-returns/
+#| label: gg_eq_curve_1 sdfsdf
+#| fig-cap: "Equity curve 1/2)"
+#| fig-alt: "Equity curve 1:"
+#| echo: false
+tar_read(gg_eq_curve_1)
+```
+```{r gg_eq_curve_2}
+#| fig-cap: "Equity curve 2/2)"
+#| fig-alt: "Equity curve 2:"
+tar_read(gg_eq_curve_2)
+```
+```{r gg_trd_buf_param}
+#| fig-cap: "Trade buffer parameter"
+#| fig-alt: "Trade buffer parameter:"
+tar_read(gg_trd_buf_param)
+```
+```{r gg_turnover}
+#| fig-cap: "Trade buffer parameter"
+#| fig-alt: "Trade buffer parameter:"
+tar_read(gg_turnover)
+```
+```{r gg_orig_yes_cost}
+#| fig-cap: "Orig with costs"
+#| fig-alt: "Orig with costs."
+tar_read(gg_orig_yes_cost)
+```
+```{r gg_returns_plot}
+#| fig-cap: "Returns"
+#| fig-alt: "Returns plot."
+tar_read(gg_returns_plot)
+```
+```{r gg_weights_plot}
+#| fig-cap: "weights"
+#| fig-alt: "weights plot."
+tar_read(gg_weights_plot)
+```
+```{r gg_rets_wghts}
+#| fig-cap: "Returns and weights"
+#| fig-alt: "weights plot."
+tar_read(gg_rets_wghts)
 ```
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+```{r sessionInfo}
+#| eval: true
+#| collapse: true
+#| label: sessionInfo
+#| echo: true
+# sessionInfo
+# 
+```
+
+```{bash}
+echo "foo" 
+```
