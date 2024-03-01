@@ -13,3 +13,4 @@
 ^.github$
 ^\.github$
 ^_extensions$
+.typ$
