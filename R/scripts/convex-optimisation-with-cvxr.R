@@ -66,7 +66,7 @@ targets::tar_script(
     pacman::p_load_current_gh("Robot-Wealth/rsims",
       dependencies = TRUE)
     # ggplot chart options ----
-    options(repr.plot.width = 14, repr.plot.height=7, warn = -1)
+    options(repr.plot.width = 14, repr.plot.height = 7, warn = -1)
     theme_set(theme_bw())
     theme_update(text = element_text(size = 20))
 
@@ -88,13 +88,13 @@ targets::tar_script(
     # script functions ----
 
     # TODO: ? move relevant .R/functions to ./R/expected_returns_models/?
-    source_dir_only <- function(path_rel = "R"){
+    source_dir_only <- function(path_rel = "R") {
       fs::path_abs(path_rel) %>%
         fs::dir_ls(regexp = "\\.R$") %>%
         str_subset("^zzz\\.[Rr]$|_targets\\.[Rr]$", negate = TRUE) %>%
         walk(source) # %>% invisible()
       # was
-      # '^[^_].+\\.R$' %>% # excl ./R/_targets.R
+      # "^[^_].+\\.R$" %>% # excl ./R/_targets.R
       #   list.files(path = "R", pattern = .) %>%
       #   walk(source)
     }
@@ -102,7 +102,7 @@ targets::tar_script(
 
     # tar_plan ----
     # incl .R functions from ./R/tar_plans/robotwealth.com
-    #   not recursively tar_source(... cos of 'old' folder
+    #   not recursively tar_source(... cos of "old" folder
     source_dir_only("R/tar_plans/robotwealth.com")
 
     tar_prms <- tar_plan(#----
@@ -140,10 +140,10 @@ tar_progress() %>% pull(progress) %>% table() %>% sort()
 # targets::tar_invalidate(a_data_from_n_sim)
 tar_visnetwork(
   names =
-    !ends_with('_[0-9a-z]{8}') & # dynamic targets
-    !starts_with('gg_') & # ggplot2
-    !starts_with('df_') & # data.frame / tibble
-    !ends_with('_head'),  # snapshots of data.frame
+    !ends_with("_[0-9a-z]{8}") & # dynamic targets
+    !starts_with("gg_") & # ggplot2
+    !starts_with("df_") & # data.frame / tibble
+    !ends_with("_head"),  # snapshots of data.frame
   shortcut = FALSE,
   zoom_speed = .25,   physics = TRUE,
   targets_only = TRUE, script = pr_script)
@@ -173,10 +173,11 @@ regex_target_branch <-
 tar_objs <- tar_objects()
 (not_brnch <- tar_objs %>%
     str_subset(regex_target_branch,
-      negate = T
+      negate = TRUE
     ) # %>% str_subset("^gg_", negate = TRUE)
 )
-length(tar_objs) ; length(not_brnch)
+length(tar_objs) 
+length(not_brnch)
 tar_load(not_brnch %>% all_of())
 mget(not_brnch) %>% str(max.level = 2, list.len = 6, give.attr = FALSE)
 # tar_load(tar_objects(starts_with("gg_"))) # see also any_of()
@@ -184,3 +185,5 @@ mget(not_brnch) %>% str(max.level = 2, list.len = 6, give.attr = FALSE)
 (tar_load_globals())
 .packages()
 # print(targets::tar_read(group, branches = 2))
+data(mtcars)
+mtcars 
