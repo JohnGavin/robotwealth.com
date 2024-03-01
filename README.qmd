@@ -1,4 +1,7 @@
 ---
+# quarto::quarto_render("README.qmd", output_format = "all")
+# quarto render README.qmd --to html,gfm
+# quarto typst compile README.typ
 title: pipeline for robotweath.com post
 description: targets, webR and dashboard
 format:

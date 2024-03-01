@@ -6,5 +6,7 @@
 .quarto
 result
 ^result$
+<<<<<<< HEAD
 /.quarto/
 /_site/
+.typ$
