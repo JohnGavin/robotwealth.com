@@ -11,3 +11,6 @@
 ^sub_shell$
 ^run
 ^.github$
+^\.github$
+^_extensions$
+.typ$

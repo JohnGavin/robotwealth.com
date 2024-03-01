@@ -1,4 +1,7 @@
 ---
+# quarto::quarto_render("README.qmd", output_format = "all")
+# quarto render README.qmd --to html,gfm
+# quarto typst compile README.typ
 title: pipeline for robotweath.com post
 description: targets, webR and dashboard
 format:
@@ -14,22 +17,22 @@ format:
   # https://quarto.org/docs/output-formats/typst.html#overview
   # ~/Documents_/note_taking_atom/projects/rix/quarto_typst.md
   # Typst creates PDF output
-  # typst:
-  #   toc: true
-  #   section-numbering: 1.1.a
-  #   columns: 2
-  # html:
+  typst:
+    keep-typ: true
+    toc: true
+    section-numbering: 1.1.a
+    columns: 2
+  html:
   # https://quarto.org/docs/computations/r.html#data-frames
   # https://quarto.org/docs/computations/r.html#output-formats
-  # paging for row/col overflow
-  #  df-print: paged
-  #   toc: true
-  #   code-fold: true
-  #   number-sections: true
-  #   css: styles.css
-  # github_document ?
-# https://quarto.org/docs/computations/r.html#output-formats
-# output: github_document/html_document # NB: OLD Rmarkdown
+    # paging for row/col overflow
+    # pages => add navbar in dashboard 
+    # df-print: paged
+    toc: true
+    code-fold: true
+    number-sections: true
+    # css: styles.css
+# output: github_document # /html_document # NB: OLD Rmarkdown
 filters:
   - webr
 webr:
@@ -49,7 +52,6 @@ editor: source
 # Quarto with R => need rmarkdown => knitr engine
 engine: knitr
 knitr: 
-  # default document level
   # also global Knitr options using opts_knit
   # https://quarto.org/docs/computations/r.html#knitr-options
   opts_chunk: 
@@ -64,6 +66,7 @@ knitr:
 # https://quarto.org/docs/computations/python.html
 # jupyter: python3
 ---
+
 
 <!-- README.md is generated from README.qmd. Please edit that file -->
 <!---
@@ -160,7 +163,7 @@ regex %>%
 #| echo: false
 #| code-fold: true
 #| collapse: true
-#| 
+
 # library(robotwealth.com)
 pacman::p_load(targets)
 # targets setup
@@ -235,3 +238,23 @@ tar_read(gg_rets_wghts)
 ```{bash}
 echo "foo" 
 ```
+
+Some text
+[in HTML.]{.content-visible when-format="html"}
+[in PDF.]{.content-visible when-format="pdf"}
+
+
+::: {.content-visible when-format="html"}
+
+Will only appear in HTML.
+https://quarto.org/docs/authoring/conditional.html
+
+:::
+
+::: {.block fill="luma(230)" inset="8pt" radius="4pt"}
+
+This is a block with gray background and slightly rounded corners.
+
+https://quarto.org/docs/output-formats/typst.html#typst-blocks
+
+:::
