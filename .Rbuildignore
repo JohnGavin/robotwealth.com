@@ -12,3 +12,4 @@
 ^run
 ^.github$
 ^\.github$
+^_extensions$
