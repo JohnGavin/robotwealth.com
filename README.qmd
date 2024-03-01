@@ -72,6 +72,7 @@ knitr:
 # 
 # https://quarto.org/docs/publishing/github-pages.html
 # quarto publish gh-pages README.qmd --no-prompt # --to index.html? 
+# quarto publish gh-pages --no-prompt
 ---
 
 
