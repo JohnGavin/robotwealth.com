@@ -1,7 +1,4 @@
 ---
-# quarto::quarto_render("README.qmd", output_format = "all")
-# quarto render README.qmd --to html,gfm
-# quarto typst compile README.typ
 title: pipeline for robotweath.com post
 description: targets, webR and dashboard
 format:
@@ -18,7 +15,7 @@ format:
   # ~/Documents_/note_taking_atom/projects/rix/quarto_typst.md
   # Typst creates PDF output
   typst:
-    keep-typ: true
+    keep-typ: false
     toc: true
     section-numbering: 1.1.a
     columns: 2
@@ -65,6 +62,13 @@ knitr:
       knitr.graphics.auto_pdf: true
 # https://quarto.org/docs/computations/python.html
 # jupyter: python3
+#
+# quarto::quarto_render("README.qmd", output_format = "all")
+# quarto render README.qmd --to html,gfm,
+# quarto typst compile README.typ
+# 
+# https://quarto.org/docs/publishing/github-pages.html
+# quarto publish gh-pages README.qmd --no-prompt # --to index.html? 
 ---
 
 
@@ -139,7 +143,7 @@ devtools::install_github("JohnGavin/robotwealth.com")
 pacman::p_load(dplyr, stringr, fs)
 regex <- "(figures)|(result)|(objects)|[.](md)|[.](htm)|[.](png)|(files)|(meta)|(old)"
 regex %>% 
-  fs::dir_tree(regexp = ., invert = T, recurse = T)
+  fs::dir_tree(regexp = ., invert = T, recurse = F)
 ```
 
 ### File sizes

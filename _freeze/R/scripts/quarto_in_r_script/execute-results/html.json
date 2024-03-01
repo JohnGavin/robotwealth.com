@@ -1,0 +1,17 @@
+{
+  "hash": "b8ebd0653ad1d8b27de52ee8041ac8eb",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: Palmer Penguins\nauthor: Norah Jones\ndate: 3/12/23\nformat: html\nexecute:\n  echo: true\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(palmerpenguins)\n```\n:::\n\n\n## render-scripts\nhttps://quarto.org/docs/computations/render-scripts.html#knitr\nquarto render  quarto_in_r_script.R\nquarto preview quarto_in_r_script.R\n## Exploring the data\nSee @fig-bill-sizes for an exploration of bill sizes by species.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(ggplot2)\nggplot(data = penguins,\n  aes(x = bill_length_mm,\n    y = bill_depth_mm,\n    group = species)) +\n  geom_point(aes(color = species,\n    shape = species),\n    size = 3,\n    alpha = 0.8) +\n  labs(title = \"Penguin bill dimensions\",\n    subtitle = \"Bill length and depth for Adelie, Chinstrap and Gentoo Penguins at Palmer Station LTER\",\n    x = \"Bill length (mm)\",\n    y = \"Bill depth (mm)\",\n    color = \"Penguin species\",\n    shape = \"Penguin species\")\n```\n\n::: {.cell-output-display}\n![Bill Sizes by Species](quarto_in_r_script_files/figure-html/fig-bill-sizes-1.png){#fig-bill-sizes width=672}\n:::\n:::\n",
+    "supporting": [
+      "quarto_in_r_script_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

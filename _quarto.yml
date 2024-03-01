@@ -1,0 +1,11 @@
+website:
+  navbar:
+    background: primary
+    search: true
+    left:
+      - text: "Home"
+        file: README.qmd
+      # - talks.qmd
+      # - about.qmd
+execute:
+  freeze: auto
