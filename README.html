@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="targets, webR and dashboard">
 
-<title>robotweath.com blogs &amp; {targets} pipeline</title>
+<title>pipeline for robotweath.com post</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,17 +72,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="fullcontent">
+<body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#robotwealth.com" id="toc-robotwealth.com" class="nav-link active" data-scroll-target="#robotwealth.com"><span class="header-section-number">1</span> robotwealth.com</a></li>
+  <li><a href="#expected-return-models" id="toc-expected-return-models" class="nav-link" data-scroll-target="#expected-return-models"><span class="header-section-number">2</span> expected return models</a>
+  <ul class="collapse">
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation"><span class="header-section-number">2.1</span> Installation</a></li>
+  <li><a href="#project-structure" id="toc-project-structure" class="nav-link" data-scroll-target="#project-structure"><span class="header-section-number">2.2</span> Project structure</a>
+  <ul class="collapse">
+  <li><a href="#tree-structure" id="toc-tree-structure" class="nav-link" data-scroll-target="#tree-structure"><span class="header-section-number">2.2.1</span> Tree structure</a></li>
+  <li><a href="#file-sizes" id="toc-file-sizes" class="nav-link" data-scroll-target="#file-sizes"><span class="header-section-number">2.2.2</span> File sizes</a></li>
+  </ul></li>
+  <li><a href="#pipeline-example" id="toc-pipeline-example" class="nav-link" data-scroll-target="#pipeline-example"><span class="header-section-number">2.3</span> Pipeline example</a>
+  <ul class="collapse">
+  <li><a href="#targetstar_make" id="toc-targetstar_make" class="nav-link" data-scroll-target="#targetstar_make"><span class="header-section-number">2.3.1</span> <code>targets::tar_make</code></a></li>
+  <li><a href="#print-data" id="toc-print-data" class="nav-link" data-scroll-target="#print-data"><span class="header-section-number">2.3.2</span> Print data</a></li>
+  <li><a href="#plot-graphs" id="toc-plot-graphs" class="nav-link" data-scroll-target="#plot-graphs"><span class="header-section-number">2.3.3</span> Plot graphs</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="README.pdf"><i class="bi bi-file-pdf"></i>Typst</a></li><li><a href="README.md"><i class="bi bi-file-code"></i>Github (GFM)</a></li></ul></div></nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">robotweath.com blogs &amp; <code>{targets}</code> pipeline</h1>
+<h1 class="title">pipeline for robotweath.com post</h1>
 </div>
 
+<div>
+  <div class="description">
+    targets, webR and dashboard
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -97,8 +126,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <!-- README.md is generated from README.qmd. Please edit that file -->
-<section id="robotwealth.com" class="level1">
-<h1>robotwealth.com</h1>
+<!---
+  enclose ALL chunks with {webr-r} - not {r}
+  then play each in webpage sequentially
+  else {r} runs locally only
+  ~/Documents_GitHub/ibrokers/vignettes/webr_dag_golem_owl.qmd
+--->
+<section id="robotwealth.com" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> robotwealth.com</h1>
 <!-- badges: start -->
 <!-- badges: end -->
 <p>The goal of robotwealth.com is build a <code>{targets}</code> pipeline of a blog post from robotwealth.com.</p>
@@ -106,8 +141,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>[https://robotwealth.com/how-to-model-features-as-expected-returns/]</li>
 </ul>
 </section>
-<section id="expected-return-models" class="level1">
-<h1>expected return models</h1>
+<section id="expected-return-models" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> expected return models</h1>
 <p>./R/robotwealth.com/expected_returns_models.R</p>
 <ul>
 <li>features ~ expected returns
@@ -133,47 +168,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul></li>
 </ul>
-<section id="installation" class="level2">
-<h2 class="anchored" data-anchor-id="installation">Installation</h2>
+<section id="installation" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="installation"><span class="header-section-number">2.1</span> Installation</h2>
 <p>Install the development version of robotwealth.com from <a href="https://github.com/">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("devtools")</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"JohnGavin/robotwealth.com"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="project-structure" class="level2">
-<h2 class="anchored" data-anchor-id="project-structure">Project structure</h2>
-<section id="tree-structure" class="level3">
-<h3 class="anchored" data-anchor-id="tree-structure">Tree structure</h3>
+<section id="project-structure" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="project-structure"><span class="header-section-number">2.2</span> Project structure</h2>
+<section id="tree-structure" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="tree-structure"><span class="header-section-number">2.2.1</span> Tree structure</h3>
 <div class="cell">
 <pre><code>#&gt; .
 #&gt; ├── DESCRIPTION
 #&gt; ├── LICENSE
 #&gt; ├── NAMESPACE
 #&gt; ├── R
+#&gt; │   ├── calc_sharpe.R
 #&gt; │   ├── data.R
 #&gt; │   ├── get_symbols_stables_llama.R
+#&gt; │   ├── ggplot_equity_curve.R
+#&gt; │   ├── globalVariables.R
 #&gt; │   ├── robotwealth.com-package.R
-#&gt; │   ├── robotwealth.com_calc_sharpe.R
-#&gt; │   ├── robotwealth.com_ggplot_equity_curve.R
-#&gt; │   ├── robotwealth.com_tar_config_set_project.R
 #&gt; │   ├── scripts
 #&gt; │   │   ├── convex-optimisation-with-cvxr.R
 #&gt; │   │   ├── expected_returns_models.R
+#&gt; │   │   ├── quarto_in_r_script.R
 #&gt; │   │   └── turnover_costs.R
-#&gt; │   └── tar_plans
-#&gt; │       ├── plan__preamble.R
-#&gt; │       └── robotwealth.com
-#&gt; │           ├── tar_01_data.R
-#&gt; │           ├── tar_02_universe.R
-#&gt; │           ├── tar_03_features.R
-#&gt; │           ├── tar_04_features_deciles.R
-#&gt; │           ├── tar_05_tidymodels.R
-#&gt; │           └── tar_06_feat_evol.R
+#&gt; │   ├── tar_config_set_project.R
+#&gt; │   ├── tar_plans
+#&gt; │   │   ├── plan__preamble.R
+#&gt; │   │   └── robotwealth.com
+#&gt; │   │       ├── tar_01_data.R
+#&gt; │   │       ├── tar_02_universe.R
+#&gt; │   │       ├── tar_03_features.R
+#&gt; │   │       ├── tar_04_features_deciles.R
+#&gt; │   │       ├── tar_05_tidymodels.R
+#&gt; │   │       └── tar_06_feat_evol.R
+#&gt; │   └── utils-pipe.R
+#&gt; ├── README.pdf
 #&gt; ├── README.qmd
 #&gt; ├── README.rmarkdown
+#&gt; ├── README.typ
+#&gt; ├── _extensions
+#&gt; │   └── coatless
+#&gt; │       └── webr
+#&gt; │           ├── _extension.yml
+#&gt; │           ├── qwebr-cell-elements.js
+#&gt; │           ├── qwebr-cell-initialization.js
+#&gt; │           ├── qwebr-compute-engine.js
+#&gt; │           ├── qwebr-document-engine-initialization.js
+#&gt; │           ├── qwebr-document-settings.js
+#&gt; │           ├── qwebr-document-status.js
+#&gt; │           ├── qwebr-monaco-editor-element.js
+#&gt; │           ├── qwebr-styling.css
+#&gt; │           ├── template.qmd
+#&gt; │           ├── webr-serviceworker.js
+#&gt; │           ├── webr-worker.js
+#&gt; │           └── webr.lua
+#&gt; ├── _quarto.yml
 #&gt; ├── _targets.yaml
 #&gt; ├── check.env
 #&gt; ├── data
-#&gt; │   ├── perpetuals.rda
+#&gt; │   ├── perps_2301_2402.rda
 #&gt; │   └── stablecoins.rda
 #&gt; ├── data-raw
 #&gt; │   └── DATASET.R
@@ -186,46 +243,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 #&gt; │   ├── calc_sharpe.Rd
 #&gt; │   ├── get_symbols_stables_llama.Rd
 #&gt; │   ├── ggplot_equity_curve.Rd
-#&gt; │   ├── perpetuals.Rd
+#&gt; │   ├── perps_2301_2402.Rd
+#&gt; │   ├── pipe.Rd
 #&gt; │   ├── robotwealth.com-package.Rd
 #&gt; │   ├── stablecoins.Rd
 #&gt; │   └── tar_config_set_project.Rd
 #&gt; ├── robotwealth.com.Rproj
+#&gt; ├── run.R
+#&gt; ├── run.sh
 #&gt; └── sub_shell
 #&gt;     └── default.nix</code></pre>
 </div>
 </section>
-<section id="file-sizes" class="level3">
-<h3 class="anchored" data-anchor-id="file-sizes">File sizes</h3>
+<section id="file-sizes" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="file-sizes"><span class="header-section-number">2.2.2</span> File sizes</h3>
 <div class="cell">
-<pre><code>#&gt; # A tibble: 48 × 3
-#&gt;    path                                                         size modify_date
-#&gt;    &lt;fs::path&gt;                                            &lt;fs::bytes&gt; &lt;date&gt;     
-#&gt;  1 data/perpetuals.rda                                         6.88M 2024-02-28 
-#&gt;  2 R/scripts/turnover_costs.R                                  14.9K 2024-02-26 
-#&gt;  3 R/tar_plans/robotwealth.com/tar_06_feat_evol.R              9.54K 2024-02-26 
-#&gt;  4 R/tar_plans/plan__preamble.R                                8.97K 2024-02-23 
-#&gt;  5 R/scripts/expected_returns_models.R                         8.66K 2024-02-27 
-#&gt;  6 R/scripts/convex-optimisation-with-cvxr.R                   5.89K 2024-02-28 
-#&gt;  7 R/tar_plans/robotwealth.com/tar_05_tidymodels.R             4.08K 2024-02-26 
-#&gt;  8 default.nix                                                 3.64K 2024-02-28 
-#&gt;  9 R/tar_plans/robotwealth.com/tar_04_features_deciles.R       3.51K 2024-02-26 
-#&gt; 10 README.rmarkdown                                            3.36K 2024-02-28 
-#&gt; # ℹ 38 more rows</code></pre>
+<pre><code>#&gt; # A tibble: 73 × 3
+#&gt;    path                                                     size modify_date
+#&gt;    &lt;fs::path&gt;                                        &lt;fs::bytes&gt; &lt;date&gt;     
+#&gt;  1 data/perps_2301_2402.rda                                2.98M 2024-02-28 
+#&gt;  2 README.pdf                                            287.49K 2024-03-01 
+#&gt;  3 _extensions/coatless/webr/webr.lua                     19.64K 2024-03-01 
+#&gt;  4 README.typ                                             15.84K 2024-03-01 
+#&gt;  5 R/scripts/turnover_costs.R                              14.9K 2024-02-26 
+#&gt;  6 R/tar_plans/robotwealth.com/tar_06_feat_evol.R          9.54K 2024-02-26 
+#&gt;  7 _extensions/coatless/webr/qwebr-compute-engine.js       9.44K 2024-03-01 
+#&gt;  8 R/tar_plans/plan__preamble.R                            8.97K 2024-02-23 
+#&gt;  9 _extensions/coatless/webr/qwebr-cell-elements.js         8.7K 2024-03-01 
+#&gt; 10 R/scripts/expected_returns_models.R                     8.66K 2024-02-27 
+#&gt; # ℹ 63 more rows</code></pre>
 </div>
 </section>
 </section>
-<section id="pipeline-example" class="level2">
-<h2 class="anchored" data-anchor-id="pipeline-example">Pipeline example</h2>
-<section id="targetstar_make" class="level3">
-<h3 class="anchored" data-anchor-id="targetstar_make"><code>targets::tar_make</code></h3>
+<section id="pipeline-example" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="pipeline-example"><span class="header-section-number">2.3</span> Pipeline example</h2>
+<section id="targetstar_make" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="targetstar_make"><span class="header-section-number">2.3.1</span> <code>targets::tar_make</code></h3>
 <div class="cell">
 <pre><code>#&gt; ▶ dispatched target rolling_days_since_high_20
-#&gt; ● completed target rolling_days_since_high_20 [0 seconds]
+#&gt; ● completed target rolling_days_since_high_20 [0.001 seconds]
 #&gt; ▶ dispatched target aprms
 #&gt; ● completed target aprms [0 seconds]
 #&gt; ▶ dispatched target url_stables_llama_files
-#&gt; ● completed target url_stables_llama_files [0.001 seconds]
+#&gt; ● completed target url_stables_llama_files [0 seconds]
 #&gt; ▶ dispatched target url_csv_files
 #&gt; ● completed target url_csv_files [0 seconds]
 #&gt; ▶ dispatched target gg_stepwise1
@@ -233,62 +293,108 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 #&gt; ▶ dispatched branch url_stables_llama_6411c91e
 #&gt; ● completed branch url_stables_llama_6411c91e [0 seconds]
 #&gt; ● completed pattern url_stables_llama
-#&gt; ✔ skipped branch url_csv_db06cf58
-#&gt; ✔ skipped pattern url_csv
+#&gt; ▶ dispatched branch url_csv_db06cf58
+#&gt; ● completed branch url_csv_db06cf58 [0 seconds]
+#&gt; ● completed pattern url_csv
 #&gt; ▶ dispatched branch stables_llama_lst_61b26602
-#&gt; ● completed branch stables_llama_lst_61b26602 [0.105 seconds]
+#&gt; ● completed branch stables_llama_lst_61b26602 [0.103 seconds]
 #&gt; ● completed pattern stables_llama_lst
-#&gt; ✔ skipped branch perps_lst_61b26602
-#&gt; ✔ skipped pattern perps_lst
-#&gt; ✔ skipped target stables_llama
-#&gt; ✔ skipped target perps_all
-#&gt; ✔ skipped target perps_ex_stbls
-#&gt; ✔ skipped target universe
-#&gt; ✔ skipped target features
-#&gt; ✔ skipped target gg_univ_size
-#&gt; ✔ skipped target model_df
-#&gt; ✔ skipped target start_date
-#&gt; ✔ skipped target gg_carry
-#&gt; ✔ skipped target gg_mome_by_yr
-#&gt; ✔ skipped target gg_mome
-#&gt; ✔ skipped target gg_breakout1
-#&gt; ✔ skipped target roll_xs_coeffs_df
-#&gt; ✔ skipped target roll_ts_coeffs_df
-#&gt; ✔ skipped target xs_coefs
-#&gt; ✔ skipped target df_roll_xs_coeffs
-#&gt; ✔ skipped target ts_coefs
-#&gt; ✔ skipped target df_roll_ts_coeffs
-#&gt; ✔ skipped target xs_coefs_df
-#&gt; ✔ skipped target ts_coefs_df
-#&gt; ✔ skipped target df_xs_coefs
-#&gt; ✔ skipped target gg_xs_coefs_df
-#&gt; ✔ skipped target exp_return_df
-#&gt; ✔ skipped target df_ts_coefs
-#&gt; ✔ skipped target gg_ts_coefs_df
-#&gt; ✔ skipped target strategy_df
-#&gt; ✔ skipped target backtest_funding
-#&gt; ✔ skipped target backtest_prices
-#&gt; ✔ skipped target backtest_weights
-#&gt; ✔ skipped target gg_returns_plot
-#&gt; ✔ skipped target gg_weights_plot
-#&gt; ✔ skipped target backtest_funding_head
-#&gt; ✔ skipped target backtest_prices_head
-#&gt; ✔ skipped target sharpes_trade_buffers
-#&gt; ✔ skipped target results_df_1
-#&gt; ✔ skipped target results_df_2
-#&gt; ✔ skipped target orig_res_with_costs
-#&gt; ✔ skipped target backtest_weights_head
-#&gt; ✔ skipped target gg_rets_wghts
-#&gt; ✔ skipped target gg_trd_buf_param
-#&gt; ✔ skipped target gg_eq_curve_1
-#&gt; ✔ skipped target gg_eq_curve_2
-#&gt; ✔ skipped target gg_turnover
-#&gt; ✔ skipped target gg_orig_yes_cost
-#&gt; ▶ completed pipeline [3.155 seconds]</code></pre>
+#&gt; ▶ dispatched branch perps_lst_61b26602
+#&gt; ● completed branch perps_lst_61b26602 [1.5 seconds]
+#&gt; ● completed pattern perps_lst
+#&gt; ▶ dispatched target stables_llama
+#&gt; ● completed target stables_llama [0 seconds]
+#&gt; ▶ dispatched target perps_all
+#&gt; ● completed target perps_all [0 seconds]
+#&gt; ▶ dispatched target perps_ex_stbls
+#&gt; ● completed target perps_ex_stbls [0.089 seconds]
+#&gt; ▶ dispatched target universe
+#&gt; ● completed target universe [0.197 seconds]
+#&gt; ▶ dispatched target features
+#&gt; ● completed target features [0.618 seconds]
+#&gt; ▶ dispatched target gg_univ_size
+#&gt; ● completed target gg_univ_size [0.012 seconds]
+#&gt; ▶ dispatched target model_df
+#&gt; ● completed target model_df [0.486 seconds]
+#&gt; ▶ dispatched target start_date
+#&gt; ● completed target start_date [0.013 seconds]
+#&gt; ▶ dispatched target gg_carry
+#&gt; ● completed target gg_carry [0.003 seconds]
+#&gt; ▶ dispatched target gg_mome_by_yr
+#&gt; ● completed target gg_mome_by_yr [0.009 seconds]
+#&gt; ▶ dispatched target gg_mome
+#&gt; ● completed target gg_mome [0.003 seconds]
+#&gt; ▶ dispatched target gg_breakout1
+#&gt; ● completed target gg_breakout1 [0.004 seconds]
+#&gt; ▶ dispatched target roll_xs_coeffs_df
+#&gt; ● completed target roll_xs_coeffs_df [2.264 seconds]
+#&gt; ▶ dispatched target roll_ts_coeffs_df
+#&gt; ● completed target roll_ts_coeffs_df [2.135 seconds]
+#&gt; ▶ dispatched target xs_coefs
+#&gt; ● completed target xs_coefs [9.517 seconds]
+#&gt; ▶ dispatched target df_roll_xs_coeffs
+#&gt; ● completed target df_roll_xs_coeffs [0 seconds]
+#&gt; ▶ dispatched target ts_coefs
+#&gt; ● completed target ts_coefs [7.018 seconds]
+#&gt; ▶ dispatched target df_roll_ts_coeffs
+#&gt; ● completed target df_roll_ts_coeffs [0.001 seconds]
+#&gt; ▶ dispatched target xs_coefs_df
+#&gt; ● completed target xs_coefs_df [0.01 seconds]
+#&gt; ▶ dispatched target ts_coefs_df
+#&gt; ● completed target ts_coefs_df [0.007 seconds]
+#&gt; ▶ dispatched target df_xs_coefs
+#&gt; ● completed target df_xs_coefs [0 seconds]
+#&gt; ▶ dispatched target gg_xs_coefs_df
+#&gt; ● completed target gg_xs_coefs_df [0.004 seconds]
+#&gt; ▶ dispatched target exp_return_df
+#&gt; ● completed target exp_return_df [0.012 seconds]
+#&gt; ▶ dispatched target df_ts_coefs
+#&gt; ● completed target df_ts_coefs [0.001 seconds]
+#&gt; ▶ dispatched target gg_ts_coefs_df
+#&gt; ● completed target gg_ts_coefs_df [0.004 seconds]
+#&gt; ▶ dispatched target strategy_df
+#&gt; ● completed target strategy_df [0.12 seconds]
+#&gt; ▶ dispatched target backtest_funding
+#&gt; ● completed target backtest_funding [0.013 seconds]
+#&gt; ▶ dispatched target backtest_prices
+#&gt; ● completed target backtest_prices [0.012 seconds]
+#&gt; ▶ dispatched target backtest_weights
+#&gt; ● completed target backtest_weights [0.012 seconds]
+#&gt; ▶ dispatched target gg_returns_plot
+#&gt; ● completed target gg_returns_plot [0.003 seconds]
+#&gt; ▶ dispatched target gg_weights_plot
+#&gt; ● completed target gg_weights_plot [0.003 seconds]
+#&gt; ▶ dispatched target backtest_funding_head
+#&gt; ● completed target backtest_funding_head [0 seconds]
+#&gt; ▶ dispatched target backtest_prices_head
+#&gt; ● completed target backtest_prices_head [0.001 seconds]
+#&gt; ▶ dispatched target sharpes_trade_buffers
+#&gt; ● completed target sharpes_trade_buffers [1.317 seconds]
+#&gt; ▶ dispatched target results_df_1
+#&gt; ● completed target results_df_1 [0.124 seconds]
+#&gt; ▶ dispatched target results_df_2
+#&gt; ● completed target results_df_2 [0.134 seconds]
+#&gt; ▶ dispatched target orig_res_with_costs
+#&gt; ● completed target orig_res_with_costs [0.126 seconds]
+#&gt; ▶ dispatched target backtest_weights_head
+#&gt; ● completed target backtest_weights_head [0 seconds]
+#&gt; ▶ dispatched target gg_rets_wghts
+#&gt; ● completed target gg_rets_wghts [0 seconds]
+#&gt; ▶ dispatched target gg_trd_buf_param
+#&gt; ● completed target gg_trd_buf_param [0.003 seconds]
+#&gt; ▶ dispatched target gg_eq_curve_1
+#&gt; ● completed target gg_eq_curve_1 [0.037 seconds]
+#&gt; ▶ dispatched target gg_eq_curve_2
+#&gt; ● completed target gg_eq_curve_2 [0.008 seconds]
+#&gt; ▶ dispatched target gg_turnover
+#&gt; ● completed target gg_turnover [0.005 seconds]
+#&gt; ▶ dispatched target gg_orig_yes_cost
+#&gt; ● completed target gg_orig_yes_cost [0.008 seconds]
+#&gt; ▶ completed pipeline [47.811 seconds]</code></pre>
 </div>
 </section>
-<section id="print-data" class="level3">
-<h3 class="anchored" data-anchor-id="print-data">Print data</h3>
+<section id="print-data" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="print-data"><span class="header-section-number">2.3.2</span> Print data</h3>
 <div class="cell">
 <pre><code>#&gt; # A tibble: 187,251 × 11
 #&gt;    ticker  date         open   high    low  close dollar_volume num_trades
@@ -308,8 +414,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 #&gt; #   funding_rate &lt;dbl&gt;</code></pre>
 </div>
 </section>
-<section id="plot-graphs" class="level3">
-<h3 class="anchored" data-anchor-id="plot-graphs">Plot graphs</h3>
+<section id="plot-graphs" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="plot-graphs"><span class="header-section-number">2.3.3</span> Plot graphs</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -388,6 +494,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sessionInfo</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<pre><code>#&gt; foo</code></pre>
+</div>
+<p>Some text <span>in HTML.</span> </p>
+<p>Will only appear in HTML. https://quarto.org/docs/authoring/conditional.html</p>
+<div class="block" data-fill="luma(230)" data-inset="8pt" data-radius="4pt">
+<p>This is a block with gray background and slightly rounded corners.</p>
+<p>https://quarto.org/docs/output-formats/typst.html#typst-blocks</p>
 </div>
 </section>
 </section>
