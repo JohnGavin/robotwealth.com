@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -184,75 +184,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 #&gt; ├── LICENSE
 #&gt; ├── NAMESPACE
 #&gt; ├── R
-#&gt; │   ├── calc_sharpe.R
-#&gt; │   ├── data.R
-#&gt; │   ├── get_symbols_stables_llama.R
-#&gt; │   ├── ggplot_equity_curve.R
-#&gt; │   ├── globalVariables.R
-#&gt; │   ├── robotwealth.com-package.R
-#&gt; │   ├── scripts
-#&gt; │   │   ├── convex-optimisation-with-cvxr.R
-#&gt; │   │   ├── expected_returns_models.R
-#&gt; │   │   ├── quarto_in_r_script.R
-#&gt; │   │   └── turnover_costs.R
-#&gt; │   ├── tar_config_set_project.R
-#&gt; │   ├── tar_plans
-#&gt; │   │   ├── plan__preamble.R
-#&gt; │   │   └── robotwealth.com
-#&gt; │   │       ├── tar_01_data.R
-#&gt; │   │       ├── tar_02_universe.R
-#&gt; │   │       ├── tar_03_features.R
-#&gt; │   │       ├── tar_04_features_deciles.R
-#&gt; │   │       ├── tar_05_tidymodels.R
-#&gt; │   │       └── tar_06_feat_evol.R
-#&gt; │   └── utils-pipe.R
 #&gt; ├── README.pdf
 #&gt; ├── README.qmd
 #&gt; ├── README.rmarkdown
 #&gt; ├── README.typ
 #&gt; ├── _extensions
-#&gt; │   └── coatless
-#&gt; │       └── webr
-#&gt; │           ├── _extension.yml
-#&gt; │           ├── qwebr-cell-elements.js
-#&gt; │           ├── qwebr-cell-initialization.js
-#&gt; │           ├── qwebr-compute-engine.js
-#&gt; │           ├── qwebr-document-engine-initialization.js
-#&gt; │           ├── qwebr-document-settings.js
-#&gt; │           ├── qwebr-document-status.js
-#&gt; │           ├── qwebr-monaco-editor-element.js
-#&gt; │           ├── qwebr-styling.css
-#&gt; │           ├── template.qmd
-#&gt; │           ├── webr-serviceworker.js
-#&gt; │           ├── webr-worker.js
-#&gt; │           └── webr.lua
 #&gt; ├── _quarto.yml
 #&gt; ├── _targets.yaml
 #&gt; ├── check.env
 #&gt; ├── data
-#&gt; │   ├── perps_2301_2402.rda
-#&gt; │   └── stablecoins.rda
 #&gt; ├── data-raw
-#&gt; │   └── DATASET.R
 #&gt; ├── default.nix
 #&gt; ├── exp_ret_mdl.R
 #&gt; ├── exp_ret_mdl.yaml
 #&gt; ├── exp_ret_mdl_store
-#&gt; │   └── user
 #&gt; ├── man
-#&gt; │   ├── calc_sharpe.Rd
-#&gt; │   ├── get_symbols_stables_llama.Rd
-#&gt; │   ├── ggplot_equity_curve.Rd
-#&gt; │   ├── perps_2301_2402.Rd
-#&gt; │   ├── pipe.Rd
-#&gt; │   ├── robotwealth.com-package.Rd
-#&gt; │   ├── stablecoins.Rd
-#&gt; │   └── tar_config_set_project.Rd
 #&gt; ├── robotwealth.com.Rproj
 #&gt; ├── run.R
 #&gt; ├── run.sh
-#&gt; └── sub_shell
-#&gt;     └── default.nix</code></pre>
+#&gt; └── sub_shell</code></pre>
 </div>
 </section>
 <section id="file-sizes" class="level3" data-number="2.2.2">
@@ -262,10 +212,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 #&gt;    path                                                     size modify_date
 #&gt;    &lt;fs::path&gt;                                        &lt;fs::bytes&gt; &lt;date&gt;     
 #&gt;  1 data/perps_2301_2402.rda                                2.98M 2024-02-28 
-#&gt;  2 README.pdf                                            287.49K 2024-03-01 
+#&gt;  2 README.pdf                                            285.87K 2024-03-01 
 #&gt;  3 _extensions/coatless/webr/webr.lua                     19.64K 2024-03-01 
-#&gt;  4 README.typ                                             15.84K 2024-03-01 
-#&gt;  5 R/scripts/turnover_costs.R                              14.9K 2024-02-26 
+#&gt;  4 R/scripts/turnover_costs.R                              14.9K 2024-02-26 
+#&gt;  5 README.typ                                             13.82K 2024-03-01 
 #&gt;  6 R/tar_plans/robotwealth.com/tar_06_feat_evol.R          9.54K 2024-02-26 
 #&gt;  7 _extensions/coatless/webr/qwebr-compute-engine.js       9.44K 2024-03-01 
 #&gt;  8 R/tar_plans/plan__preamble.R                            8.97K 2024-02-23 
@@ -280,117 +230,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="targetstar_make" class="level3" data-number="2.3.1">
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="targetstar_make"><span class="header-section-number">2.3.1</span> <code>targets::tar_make</code></h3>
 <div class="cell">
-<pre><code>#&gt; ▶ dispatched target rolling_days_since_high_20
-#&gt; ● completed target rolling_days_since_high_20 [0.001 seconds]
-#&gt; ▶ dispatched target aprms
-#&gt; ● completed target aprms [0 seconds]
+<pre><code>#&gt; ✔ skipped target rolling_days_since_high_20
+#&gt; ✔ skipped target aprms
 #&gt; ▶ dispatched target url_stables_llama_files
-#&gt; ● completed target url_stables_llama_files [0 seconds]
+#&gt; ● completed target url_stables_llama_files [0.001 seconds]
 #&gt; ▶ dispatched target url_csv_files
 #&gt; ● completed target url_csv_files [0 seconds]
-#&gt; ▶ dispatched target gg_stepwise1
-#&gt; ● completed target gg_stepwise1 [0.007 seconds]
+#&gt; ✔ skipped target gg_stepwise1
 #&gt; ▶ dispatched branch url_stables_llama_6411c91e
 #&gt; ● completed branch url_stables_llama_6411c91e [0 seconds]
 #&gt; ● completed pattern url_stables_llama
-#&gt; ▶ dispatched branch url_csv_db06cf58
-#&gt; ● completed branch url_csv_db06cf58 [0 seconds]
-#&gt; ● completed pattern url_csv
+#&gt; ✔ skipped branch url_csv_db06cf58
+#&gt; ✔ skipped pattern url_csv
 #&gt; ▶ dispatched branch stables_llama_lst_61b26602
-#&gt; ● completed branch stables_llama_lst_61b26602 [0.103 seconds]
+#&gt; ● completed branch stables_llama_lst_61b26602 [0.119 seconds]
 #&gt; ● completed pattern stables_llama_lst
-#&gt; ▶ dispatched branch perps_lst_61b26602
-#&gt; ● completed branch perps_lst_61b26602 [1.5 seconds]
-#&gt; ● completed pattern perps_lst
-#&gt; ▶ dispatched target stables_llama
-#&gt; ● completed target stables_llama [0 seconds]
-#&gt; ▶ dispatched target perps_all
-#&gt; ● completed target perps_all [0 seconds]
-#&gt; ▶ dispatched target perps_ex_stbls
-#&gt; ● completed target perps_ex_stbls [0.089 seconds]
-#&gt; ▶ dispatched target universe
-#&gt; ● completed target universe [0.197 seconds]
-#&gt; ▶ dispatched target features
-#&gt; ● completed target features [0.618 seconds]
-#&gt; ▶ dispatched target gg_univ_size
-#&gt; ● completed target gg_univ_size [0.012 seconds]
-#&gt; ▶ dispatched target model_df
-#&gt; ● completed target model_df [0.486 seconds]
-#&gt; ▶ dispatched target start_date
-#&gt; ● completed target start_date [0.013 seconds]
-#&gt; ▶ dispatched target gg_carry
-#&gt; ● completed target gg_carry [0.003 seconds]
-#&gt; ▶ dispatched target gg_mome_by_yr
-#&gt; ● completed target gg_mome_by_yr [0.009 seconds]
-#&gt; ▶ dispatched target gg_mome
-#&gt; ● completed target gg_mome [0.003 seconds]
-#&gt; ▶ dispatched target gg_breakout1
-#&gt; ● completed target gg_breakout1 [0.004 seconds]
-#&gt; ▶ dispatched target roll_xs_coeffs_df
-#&gt; ● completed target roll_xs_coeffs_df [2.264 seconds]
-#&gt; ▶ dispatched target roll_ts_coeffs_df
-#&gt; ● completed target roll_ts_coeffs_df [2.135 seconds]
-#&gt; ▶ dispatched target xs_coefs
-#&gt; ● completed target xs_coefs [9.517 seconds]
-#&gt; ▶ dispatched target df_roll_xs_coeffs
-#&gt; ● completed target df_roll_xs_coeffs [0 seconds]
-#&gt; ▶ dispatched target ts_coefs
-#&gt; ● completed target ts_coefs [7.018 seconds]
-#&gt; ▶ dispatched target df_roll_ts_coeffs
-#&gt; ● completed target df_roll_ts_coeffs [0.001 seconds]
-#&gt; ▶ dispatched target xs_coefs_df
-#&gt; ● completed target xs_coefs_df [0.01 seconds]
-#&gt; ▶ dispatched target ts_coefs_df
-#&gt; ● completed target ts_coefs_df [0.007 seconds]
-#&gt; ▶ dispatched target df_xs_coefs
-#&gt; ● completed target df_xs_coefs [0 seconds]
-#&gt; ▶ dispatched target gg_xs_coefs_df
-#&gt; ● completed target gg_xs_coefs_df [0.004 seconds]
-#&gt; ▶ dispatched target exp_return_df
-#&gt; ● completed target exp_return_df [0.012 seconds]
-#&gt; ▶ dispatched target df_ts_coefs
-#&gt; ● completed target df_ts_coefs [0.001 seconds]
-#&gt; ▶ dispatched target gg_ts_coefs_df
-#&gt; ● completed target gg_ts_coefs_df [0.004 seconds]
-#&gt; ▶ dispatched target strategy_df
-#&gt; ● completed target strategy_df [0.12 seconds]
-#&gt; ▶ dispatched target backtest_funding
-#&gt; ● completed target backtest_funding [0.013 seconds]
-#&gt; ▶ dispatched target backtest_prices
-#&gt; ● completed target backtest_prices [0.012 seconds]
-#&gt; ▶ dispatched target backtest_weights
-#&gt; ● completed target backtest_weights [0.012 seconds]
-#&gt; ▶ dispatched target gg_returns_plot
-#&gt; ● completed target gg_returns_plot [0.003 seconds]
-#&gt; ▶ dispatched target gg_weights_plot
-#&gt; ● completed target gg_weights_plot [0.003 seconds]
-#&gt; ▶ dispatched target backtest_funding_head
-#&gt; ● completed target backtest_funding_head [0 seconds]
-#&gt; ▶ dispatched target backtest_prices_head
-#&gt; ● completed target backtest_prices_head [0.001 seconds]
-#&gt; ▶ dispatched target sharpes_trade_buffers
-#&gt; ● completed target sharpes_trade_buffers [1.317 seconds]
-#&gt; ▶ dispatched target results_df_1
-#&gt; ● completed target results_df_1 [0.124 seconds]
-#&gt; ▶ dispatched target results_df_2
-#&gt; ● completed target results_df_2 [0.134 seconds]
-#&gt; ▶ dispatched target orig_res_with_costs
-#&gt; ● completed target orig_res_with_costs [0.126 seconds]
-#&gt; ▶ dispatched target backtest_weights_head
-#&gt; ● completed target backtest_weights_head [0 seconds]
-#&gt; ▶ dispatched target gg_rets_wghts
-#&gt; ● completed target gg_rets_wghts [0 seconds]
-#&gt; ▶ dispatched target gg_trd_buf_param
-#&gt; ● completed target gg_trd_buf_param [0.003 seconds]
-#&gt; ▶ dispatched target gg_eq_curve_1
-#&gt; ● completed target gg_eq_curve_1 [0.037 seconds]
-#&gt; ▶ dispatched target gg_eq_curve_2
-#&gt; ● completed target gg_eq_curve_2 [0.008 seconds]
-#&gt; ▶ dispatched target gg_turnover
-#&gt; ● completed target gg_turnover [0.005 seconds]
-#&gt; ▶ dispatched target gg_orig_yes_cost
-#&gt; ● completed target gg_orig_yes_cost [0.008 seconds]
-#&gt; ▶ completed pipeline [47.811 seconds]</code></pre>
+#&gt; ✔ skipped branch perps_lst_61b26602
+#&gt; ✔ skipped pattern perps_lst
+#&gt; ✔ skipped target stables_llama
+#&gt; ✔ skipped target perps_all
+#&gt; ✔ skipped target perps_ex_stbls
+#&gt; ✔ skipped target universe
+#&gt; ✔ skipped target features
+#&gt; ✔ skipped target gg_univ_size
+#&gt; ✔ skipped target model_df
+#&gt; ✔ skipped target start_date
+#&gt; ✔ skipped target gg_carry
+#&gt; ✔ skipped target gg_mome_by_yr
+#&gt; ✔ skipped target gg_mome
+#&gt; ✔ skipped target gg_breakout1
+#&gt; ✔ skipped target roll_xs_coeffs_df
+#&gt; ✔ skipped target roll_ts_coeffs_df
+#&gt; ✔ skipped target xs_coefs
+#&gt; ✔ skipped target df_roll_xs_coeffs
+#&gt; ✔ skipped target ts_coefs
+#&gt; ✔ skipped target df_roll_ts_coeffs
+#&gt; ✔ skipped target xs_coefs_df
+#&gt; ✔ skipped target ts_coefs_df
+#&gt; ✔ skipped target df_xs_coefs
+#&gt; ✔ skipped target gg_xs_coefs_df
+#&gt; ✔ skipped target exp_return_df
+#&gt; ✔ skipped target df_ts_coefs
+#&gt; ✔ skipped target gg_ts_coefs_df
+#&gt; ✔ skipped target strategy_df
+#&gt; ✔ skipped target backtest_funding
+#&gt; ✔ skipped target backtest_prices
+#&gt; ✔ skipped target backtest_weights
+#&gt; ✔ skipped target gg_returns_plot
+#&gt; ✔ skipped target gg_weights_plot
+#&gt; ✔ skipped target backtest_funding_head
+#&gt; ✔ skipped target backtest_prices_head
+#&gt; ✔ skipped target sharpes_trade_buffers
+#&gt; ✔ skipped target results_df_1
+#&gt; ✔ skipped target results_df_2
+#&gt; ✔ skipped target orig_res_with_costs
+#&gt; ✔ skipped target backtest_weights_head
+#&gt; ✔ skipped target gg_rets_wghts
+#&gt; ✔ skipped target gg_trd_buf_param
+#&gt; ✔ skipped target gg_eq_curve_1
+#&gt; ✔ skipped target gg_eq_curve_2
+#&gt; ✔ skipped target gg_turnover
+#&gt; ✔ skipped target gg_orig_yes_cost
+#&gt; ▶ ended pipeline [0.824 seconds]</code></pre>
 </div>
 </section>
 <section id="print-data" class="level3" data-number="2.3.2">
