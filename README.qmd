@@ -1,0 +1,267 @@
+---
+# quarto::quarto_render("README.qmd", output_format = "all")
+# quarto render README.qmd --to html,gfm
+# quarto typst compile README.typ
+title: pipeline for robotweath.com post
+description: targets, webR and dashboard
+format:
+  dashboard:
+    orientation: rows
+    theme: default
+    # expandable: true
+    # scrolling: false
+    nav-buttons:
+     # - reddit
+     - icon: gitlab
+       href: https://gitlab.com/johngavin/robotweath.com
+  # https://quarto.org/docs/output-formats/typst.html#overview
+  # ~/Documents_/note_taking_atom/projects/rix/quarto_typst.md
+  # Typst creates PDF output
+  typst:
+    keep-typ: false
+    toc: true
+    section-numbering: 1.1.a
+    columns: 2
+  html:
+  # https://quarto.org/docs/computations/r.html#data-frames
+  # https://quarto.org/docs/computations/r.html#output-formats
+    # paging for row/col overflow
+    # pages => add navbar in dashboard 
+    # df-print: paged
+    toc: true
+    code-fold: true
+    number-sections: true
+    # css: styles.css
+# output: github_document # /html_document # NB: OLD Rmarkdown
+filters:
+  - webr
+webr:
+  packages:
+  # CRAN packages installed when page opened
+  - "ggplot2"
+  - "dplyr" # dplyr::`%>%`
+  # - "tidyverse" # avoid to speed up pg load
+  # - "tidygraph"
+  # - "igraph"
+  # - "ggdag"
+execute:
+  echo: false
+  error: true
+# embed-resources: true
+editor: source
+# Quarto with R => need rmarkdown => knitr engine
+engine: knitr
+knitr: 
+  # also global Knitr options using opts_knit
+  # https://quarto.org/docs/computations/r.html#knitr-options
+  opts_chunk: 
+    # https://yihui.org/knitr/options/
+    collapse: true
+    comment: "#>"
+    # # https://quarto.org/docs/computations/execution-options.html#figure-options
+    fig.path: "man/figures/README-"
+    out.width: "100%"
+    R.options:
+      knitr.graphics.auto_pdf: true
+# https://quarto.org/docs/computations/python.html
+# jupyter: python3
+#
+# quarto::quarto_render("README.qmd", output_format = "all")
+# quarto render README.qmd --to html,gfm,
+# quarto typst compile README.typ
+# 
+# https://quarto.org/docs/publishing/github-pages.html
+# quarto publish gh-pages README.qmd --no-prompt # --to index.html? 
+---
+
+
+<!-- README.md is generated from README.qmd. Please edit that file -->
+<!---
+  enclose ALL chunks with {webr-r} - not {r}
+  then play each in webpage sequentially
+  else {r} runs locally only
+  ~/Documents_GitHub/ibrokers/vignettes/webr_dag_golem_owl.qmd
+--->
+
+```{r quarto cli, include = FALSE}
+# https://quarto.org/docs/computations/r.html#chunk-options
+# #| fig-cap: !expr 'paste("Air", "Quality")'
+#| eval: false
+#| collapse: true
+#| label: quarto cli
+#| echo: true
+# system(" quarto preview README.qmd --to default ") # --no-watch-inputs --no-browse
+# 
+# NB: knitr::opts_chunk$set in yaml header above
+# knitr::opts_chunk$set( # now in yaml above
+#   collapse = TRUE, comment = "#>",
+#   fig.path = "man/figures/README-",
+#   out.width = "100%")
+```
+
+# robotwealth.com
+
+<!-- badges: start -->
+
+<!-- badges: end -->
+
+The goal of robotwealth.com is build a `{targets}` pipeline of a blog post from robotwealth.com.
+
+-   [https://robotwealth.com/how-to-model-features-as-expected-returns/]
+
+# expected return models
+
+./R/robotwealth.com/expected_returns_models.R
+
+-   features \~ expected returns
+    -   objective
+        -   predict then capitalise on future returns
+    -   intuitive optimisation and implementation
+    -   direct comparison of features
+    -   framework to add/eval old/new signals
+-   common *risk* models
+    -   e.g. covariance estimates
+-   expected return & risk models
+    -   direct comparison with trading costs
+    -   optimisation techniques to trade-off
+        -   return, risk, and turnover given constraints
+
+## Installation
+
+Install the development version of robotwealth.com from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("JohnGavin/robotwealth.com")
+```
+
+## Project structure
+
+### Tree structure
+
+```{r tree}
+#| code-fold: true
+#| collapse: true
+# output: asis
+pacman::p_load(dplyr, stringr, fs)
+regex <- "(figures)|(result)|(objects)|[.](md)|[.](htm)|[.](png)|(files)|(meta)|(old)"
+regex %>% 
+  fs::dir_tree(regexp = ., invert = T, recurse = F)
+```
+
+### File sizes
+
+```{r dir_info}
+"." %>% 
+  dir_info(recurse = T) %>% 
+  mutate(modify_date =
+    as.Date(modification_time)) %>% 
+  select(path, size, modify_date) %>% 
+  filter(path %>% 
+    str_detect(pattern = regex, negate = T)) %>% 
+   arrange(desc(size))
+```
+
+## Pipeline example
+
+### `targets::tar_make`
+
+```{r tar_make}
+#| echo: false
+#| code-fold: true
+#| collapse: true
+
+# library(robotwealth.com)
+pacman::p_load(targets)
+# targets setup
+scr <- "exp_ret_mdl.R"
+str <- "exp_ret_mdl_store"
+targets::tar_config_set(script = scr, store = str)
+targets::tar_make(callr_function = NULL)  
+```
+
+### Print data
+
+```{r perps_all}
+tar_read(perps_all)
+```
+
+### Plot graphs
+
+```{r gg_eq_curve_1}
+# TODO: link each plot to 
+# https://robotwealth.com/how-to-model-features-as-expected-returns/
+#| label: gg_eq_curve_1 sdfsdf
+#| fig-cap: "Equity curve 1/2)"
+#| fig-alt: "Equity curve 1:"
+#| echo: false
+tar_read(gg_eq_curve_1)
+```
+```{r gg_eq_curve_2}
+#| fig-cap: "Equity curve 2/2)"
+#| fig-alt: "Equity curve 2:"
+tar_read(gg_eq_curve_2)
+```
+```{r gg_trd_buf_param}
+#| fig-cap: "Trade buffer parameter"
+#| fig-alt: "Trade buffer parameter:"
+tar_read(gg_trd_buf_param)
+```
+```{r gg_turnover}
+#| fig-cap: "Trade buffer parameter"
+#| fig-alt: "Trade buffer parameter:"
+tar_read(gg_turnover)
+```
+```{r gg_orig_yes_cost}
+#| fig-cap: "Orig with costs"
+#| fig-alt: "Orig with costs."
+tar_read(gg_orig_yes_cost)
+```
+```{r gg_returns_plot}
+#| fig-cap: "Returns"
+#| fig-alt: "Returns plot."
+tar_read(gg_returns_plot)
+```
+```{r gg_weights_plot}
+#| fig-cap: "weights"
+#| fig-alt: "weights plot."
+tar_read(gg_weights_plot)
+```
+```{r gg_rets_wghts}
+#| fig-cap: "Returns and weights"
+#| fig-alt: "weights plot."
+tar_read(gg_rets_wghts)
+```
+
+```{r sessionInfo}
+#| eval: true
+#| collapse: true
+#| label: sessionInfo
+#| echo: true
+# sessionInfo
+# 
+```
+
+```{bash}
+echo "foo" 
+```
+
+Some text
+[in HTML.]{.content-visible when-format="html"}
+[in PDF.]{.content-visible when-format="pdf"}
+
+
+::: {.content-visible when-format="html"}
+
+Will only appear in HTML.
+https://quarto.org/docs/authoring/conditional.html
+
+:::
+
+::: {.block fill="luma(230)" inset="8pt" radius="4pt"}
+
+This is a block with gray background and slightly rounded corners.
+
+https://quarto.org/docs/output-formats/typst.html#typst-blocks
+
+:::

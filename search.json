@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "R/scripts/quarto_in_r_script.html",
+    "href": "R/scripts/quarto_in_r_script.html",
+    "title": "Palmer Penguins",
+    "section": "",
+    "text": "library(palmerpenguins)"
+  },
+  {
+    "objectID": "R/scripts/quarto_in_r_script.html#render-scripts",
+    "href": "R/scripts/quarto_in_r_script.html#render-scripts",
+    "title": "Palmer Penguins",
+    "section": "render-scripts",
+    "text": "render-scripts\nhttps://quarto.org/docs/computations/render-scripts.html#knitr quarto render quarto_in_r_script.R quarto preview quarto_in_r_script.R ## Exploring the data See Figure 1 for an exploration of bill sizes by species.\n\nlibrary(ggplot2)\nggplot(data = penguins,\n  aes(x = bill_length_mm,\n    y = bill_depth_mm,\n    group = species)) +\n  geom_point(aes(color = species,\n    shape = species),\n    size = 3,\n    alpha = 0.8) +\n  labs(title = \"Penguin bill dimensions\",\n    subtitle = \"Bill length and depth for Adelie, Chinstrap and Gentoo Penguins at Palmer Station LTER\",\n    x = \"Bill length (mm)\",\n    y = \"Bill depth (mm)\",\n    color = \"Penguin species\",\n    shape = \"Penguin species\")\n\n\n\n\n\n\n\nFigure 1: Bill Sizes by Species"
+  },
+  {
+    "objectID": "LICENSE.html",
+    "href": "LICENSE.html",
+    "title": "MIT License",
+    "section": "",
+    "text": "MIT License\nCopyright (c) 2024 John Gavin\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "website_test",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+  }
+]
