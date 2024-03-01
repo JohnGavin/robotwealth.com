@@ -4,6 +4,8 @@ website:
     search: true
     left:
       - text: "Home"
-        file: index.qmd
-      - talks.qmd
-      - about.qmd
+        file: README.qmd
+      # - talks.qmd
+      # - about.qmd
+execute:
+  freeze: auto
