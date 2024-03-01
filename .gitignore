@@ -6,3 +6,5 @@
 .quarto
 result
 ^result$
+/.quarto/
+/_site/

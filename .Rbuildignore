@@ -11,3 +11,4 @@
 ^sub_shell$
 ^run
 ^.github$
+^\.github$
