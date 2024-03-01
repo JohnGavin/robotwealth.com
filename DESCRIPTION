@@ -13,27 +13,29 @@ URL: https://github.com/JohnGavin/robotwealth.com
 BugReports: https://github.com/JohnGavin/robotwealth.com/issues
 Suggests: 
     devtools,
-    dplyr,
-    ggplot2,
-    purrr,
     readr,
     stringr,
-    targets,
     testthat,
     tibble,
     tidyr
 Imports: 
+    dplyr,
     fs,
+    ggplot2,
     glue,
     here,
-    lmtest,
+    httr,
+    jsonlite,
     lubridate,
+    magrittr,
     pacman,
-    patchwork,
+    purrr,
     roll,
-    sandwich,
-    tarchetypes,
+    stats,
+    targets,
     tibbletime,
-    tidyfit
+    tidyfit,
+    utils
 Depends: 
     R (>= 4.3)
+LazyData: true

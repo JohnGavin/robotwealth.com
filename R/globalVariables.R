@@ -1,0 +1,14 @@
+globalVariables(c(
+  "ggplot_equity_curve",
+  "Date",
+  "Margin",
+  "ticker",
+  "symbol",
+  "Value",
+  "Cash",
+  "Equity",
+  "returns",
+  "."
+  #"get_symbols_stables_llama",
+  #calc_sharpe,
+  ))

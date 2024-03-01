@@ -1,6 +1,13 @@
 ^robotwealth\.com\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
-^README\.Rmd$
+^README
 ^data-raw$
 ^result$
+^_targets.yaml$
+^check.env$
+^default.nix$
+^exp_ret_mdl
+^sub_shell$
+^run
+^.github$

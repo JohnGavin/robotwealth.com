@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -103,7 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- badges: end -->
 <p>The goal of robotwealth.com is build a <code>{targets}</code> pipeline of a blog post from robotwealth.com.</p>
 <ul>
-<li>https://robotwealth.com/how-to-model-features-as-expected-returns/</li>
+<li>[https://robotwealth.com/how-to-model-features-as-expected-returns/]</li>
 </ul>
 </section>
 <section id="expected-return-models" class="level1">
@@ -136,18 +136,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="installation" class="level2">
 <h2 class="anchored" data-anchor-id="installation">Installation</h2>
 <p>Install the development version of robotwealth.com from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("devtools")</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"JohnGavin/robotwealth.com"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("devtools")</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"JohnGavin/robotwealth.com"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="project-structure" class="level2">
 <h2 class="anchored" data-anchor-id="project-structure">Project structure</h2>
+<section id="tree-structure" class="level3">
+<h3 class="anchored" data-anchor-id="tree-structure">Tree structure</h3>
 <div class="cell">
 <pre><code>#&gt; .
 #&gt; ├── DESCRIPTION
 #&gt; ├── LICENSE
 #&gt; ├── NAMESPACE
 #&gt; ├── R
+#&gt; │   ├── data.R
 #&gt; │   ├── get_symbols_stables_llama.R
 #&gt; │   ├── robotwealth.com-package.R
 #&gt; │   ├── robotwealth.com_calc_sharpe.R
@@ -168,6 +170,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 #&gt; │           └── tar_06_feat_evol.R
 #&gt; ├── README.qmd
 #&gt; ├── README.rmarkdown
+#&gt; ├── _targets.yaml
+#&gt; ├── check.env
+#&gt; ├── data
+#&gt; │   ├── perpetuals.rda
+#&gt; │   └── stablecoins.rda
 #&gt; ├── data-raw
 #&gt; │   └── DATASET.R
 #&gt; ├── default.nix
@@ -177,55 +184,212 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 #&gt; │   └── user
 #&gt; ├── man
 #&gt; │   ├── calc_sharpe.Rd
-#&gt; │   ├── figures
+#&gt; │   ├── get_symbols_stables_llama.Rd
 #&gt; │   ├── ggplot_equity_curve.Rd
+#&gt; │   ├── perpetuals.Rd
 #&gt; │   ├── robotwealth.com-package.Rd
+#&gt; │   ├── stablecoins.Rd
 #&gt; │   └── tar_config_set_project.Rd
-#&gt; ├── result
 #&gt; ├── robotwealth.com.Rproj
 #&gt; └── sub_shell
-#&gt;     └── default.nix
-#&gt; # A tibble: 41 × 3
-#&gt;    path                                                         size modify_date
-#&gt;    &lt;fs::path&gt;                                            &lt;fs::bytes&gt; &lt;date&gt;     
-#&gt;  1 R/scripts/turnover_costs.R                                  14.9K 2024-02-26 
-#&gt;  2 R/tar_plans/robotwealth.com/tar_06_feat_evol.R              9.54K 2024-02-26 
-#&gt;  3 R/tar_plans/plan__preamble.R                                8.97K 2024-02-23 
-#&gt;  4 R/scripts/expected_returns_models.R                         8.66K 2024-02-27 
-#&gt;  5 R/scripts/convex-optimisation-with-cvxr.R                   5.89K 2024-02-28 
-#&gt;  6 R/tar_plans/robotwealth.com/tar_05_tidymodels.R             4.08K 2024-02-26 
-#&gt;  7 R/tar_plans/robotwealth.com/tar_04_features_deciles.R       3.51K 2024-02-26 
-#&gt;  8 default.nix                                                 2.84K 2024-02-27 
-#&gt;  9 sub_shell/default.nix                                       2.81K 2024-02-27 
-#&gt; 10 README.rmarkdown                                            2.42K 2024-02-28 
-#&gt; # ℹ 31 more rows</code></pre>
+#&gt;     └── default.nix</code></pre>
 </div>
 </section>
-<section id="example" class="level2">
-<h2 class="anchored" data-anchor-id="example">Example</h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
-<p>What is special about using <code>README.Rmd</code> instead of just <code>README.md</code>? You can include R chunks like so:</p>
+<section id="file-sizes" class="level3">
+<h3 class="anchored" data-anchor-id="file-sizes">File sizes</h3>
 <div class="cell">
-<pre><code>#&gt;      speed           dist       
-#&gt;  Min.   : 4.0   Min.   :  2.00  
-#&gt;  1st Qu.:12.0   1st Qu.: 26.00  
-#&gt;  Median :15.0   Median : 36.00  
-#&gt;  Mean   :15.4   Mean   : 42.98  
-#&gt;  3rd Qu.:19.0   3rd Qu.: 56.00  
-#&gt;  Max.   :25.0   Max.   :120.00</code></pre>
+<pre><code>#&gt; # A tibble: 48 × 3
+#&gt;    path                                                         size modify_date
+#&gt;    &lt;fs::path&gt;                                            &lt;fs::bytes&gt; &lt;date&gt;     
+#&gt;  1 data/perpetuals.rda                                         6.88M 2024-02-28 
+#&gt;  2 R/scripts/turnover_costs.R                                  14.9K 2024-02-26 
+#&gt;  3 R/tar_plans/robotwealth.com/tar_06_feat_evol.R              9.54K 2024-02-26 
+#&gt;  4 R/tar_plans/plan__preamble.R                                8.97K 2024-02-23 
+#&gt;  5 R/scripts/expected_returns_models.R                         8.66K 2024-02-27 
+#&gt;  6 R/scripts/convex-optimisation-with-cvxr.R                   5.89K 2024-02-28 
+#&gt;  7 R/tar_plans/robotwealth.com/tar_05_tidymodels.R             4.08K 2024-02-26 
+#&gt;  8 default.nix                                                 3.64K 2024-02-28 
+#&gt;  9 R/tar_plans/robotwealth.com/tar_04_features_deciles.R       3.51K 2024-02-26 
+#&gt; 10 README.rmarkdown                                            3.36K 2024-02-28 
+#&gt; # ℹ 38 more rows</code></pre>
 </div>
-<p>You’ll still need to render <code>README.Rmd</code> regularly, to keep <code>README.md</code> up-to-date. <code>devtools::build_readme()</code> is handy for this.</p>
-<p>You can also embed plots, for example:</p>
+</section>
+</section>
+<section id="pipeline-example" class="level2">
+<h2 class="anchored" data-anchor-id="pipeline-example">Pipeline example</h2>
+<section id="targetstar_make" class="level3">
+<h3 class="anchored" data-anchor-id="targetstar_make"><code>targets::tar_make</code></h3>
+<div class="cell">
+<pre><code>#&gt; ▶ dispatched target rolling_days_since_high_20
+#&gt; ● completed target rolling_days_since_high_20 [0 seconds]
+#&gt; ▶ dispatched target aprms
+#&gt; ● completed target aprms [0 seconds]
+#&gt; ▶ dispatched target url_stables_llama_files
+#&gt; ● completed target url_stables_llama_files [0.001 seconds]
+#&gt; ▶ dispatched target url_csv_files
+#&gt; ● completed target url_csv_files [0 seconds]
+#&gt; ▶ dispatched target gg_stepwise1
+#&gt; ● completed target gg_stepwise1 [0.007 seconds]
+#&gt; ▶ dispatched branch url_stables_llama_6411c91e
+#&gt; ● completed branch url_stables_llama_6411c91e [0 seconds]
+#&gt; ● completed pattern url_stables_llama
+#&gt; ✔ skipped branch url_csv_db06cf58
+#&gt; ✔ skipped pattern url_csv
+#&gt; ▶ dispatched branch stables_llama_lst_61b26602
+#&gt; ● completed branch stables_llama_lst_61b26602 [0.105 seconds]
+#&gt; ● completed pattern stables_llama_lst
+#&gt; ✔ skipped branch perps_lst_61b26602
+#&gt; ✔ skipped pattern perps_lst
+#&gt; ✔ skipped target stables_llama
+#&gt; ✔ skipped target perps_all
+#&gt; ✔ skipped target perps_ex_stbls
+#&gt; ✔ skipped target universe
+#&gt; ✔ skipped target features
+#&gt; ✔ skipped target gg_univ_size
+#&gt; ✔ skipped target model_df
+#&gt; ✔ skipped target start_date
+#&gt; ✔ skipped target gg_carry
+#&gt; ✔ skipped target gg_mome_by_yr
+#&gt; ✔ skipped target gg_mome
+#&gt; ✔ skipped target gg_breakout1
+#&gt; ✔ skipped target roll_xs_coeffs_df
+#&gt; ✔ skipped target roll_ts_coeffs_df
+#&gt; ✔ skipped target xs_coefs
+#&gt; ✔ skipped target df_roll_xs_coeffs
+#&gt; ✔ skipped target ts_coefs
+#&gt; ✔ skipped target df_roll_ts_coeffs
+#&gt; ✔ skipped target xs_coefs_df
+#&gt; ✔ skipped target ts_coefs_df
+#&gt; ✔ skipped target df_xs_coefs
+#&gt; ✔ skipped target gg_xs_coefs_df
+#&gt; ✔ skipped target exp_return_df
+#&gt; ✔ skipped target df_ts_coefs
+#&gt; ✔ skipped target gg_ts_coefs_df
+#&gt; ✔ skipped target strategy_df
+#&gt; ✔ skipped target backtest_funding
+#&gt; ✔ skipped target backtest_prices
+#&gt; ✔ skipped target backtest_weights
+#&gt; ✔ skipped target gg_returns_plot
+#&gt; ✔ skipped target gg_weights_plot
+#&gt; ✔ skipped target backtest_funding_head
+#&gt; ✔ skipped target backtest_prices_head
+#&gt; ✔ skipped target sharpes_trade_buffers
+#&gt; ✔ skipped target results_df_1
+#&gt; ✔ skipped target results_df_2
+#&gt; ✔ skipped target orig_res_with_costs
+#&gt; ✔ skipped target backtest_weights_head
+#&gt; ✔ skipped target gg_rets_wghts
+#&gt; ✔ skipped target gg_trd_buf_param
+#&gt; ✔ skipped target gg_eq_curve_1
+#&gt; ✔ skipped target gg_eq_curve_2
+#&gt; ✔ skipped target gg_turnover
+#&gt; ✔ skipped target gg_orig_yes_cost
+#&gt; ▶ completed pipeline [3.155 seconds]</code></pre>
+</div>
+</section>
+<section id="print-data" class="level3">
+<h3 class="anchored" data-anchor-id="print-data">Print data</h3>
+<div class="cell">
+<pre><code>#&gt; # A tibble: 187,251 × 11
+#&gt;    ticker  date         open   high    low  close dollar_volume num_trades
+#&gt;    &lt;chr&gt;   &lt;date&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;
+#&gt;  1 BTCUSDT 2019-09-11 10172. 10293.  9884.  9992.     85955369.      10928
+#&gt;  2 BTCUSDT 2019-09-12  9992. 10365.  9934. 10327.    157223498.      19384
+#&gt;  3 BTCUSDT 2019-09-13 10327. 10450. 10239. 10297.    189055129.      25370
+#&gt;  4 BTCUSDT 2019-09-14 10295. 10396. 10154. 10358     206031349.      31494
+#&gt;  5 BTCUSDT 2019-09-15 10356. 10420. 10025. 10306.    211326874.      27512
+#&gt;  6 BTCUSDT 2019-09-16 10307. 10354. 10115  10120.    208211376.      29030
+#&gt;  7 BTCUSDT 2019-09-17 10117. 10329. 10081. 10201.    223930859.      31866
+#&gt;  8 BTCUSDT 2019-09-18 10201. 10271. 10098. 10173.    221746132.      30440
+#&gt;  9 BTCUSDT 2019-09-19 10173. 10212.  9530.  9880.    225183077.      36439
+#&gt; 10 BTCUSDT 2019-09-20  9882  10332.  9875. 10181.    261266607.      37161
+#&gt; # ℹ 187,241 more rows
+#&gt; # ℹ 3 more variables: taker_buy_volume &lt;dbl&gt;, taker_buy_quote_volumne &lt;dbl&gt;,
+#&gt; #   funding_rate &lt;dbl&gt;</code></pre>
+</div>
+</section>
+<section id="plot-graphs" class="level3">
+<h3 class="anchored" data-anchor-id="plot-graphs">Plot graphs</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="man/figures/README-pressure-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="man/figures/README-gg_eq_curve_1-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>In that case, don’t forget to commit and push the resulting figure files, so they display on GitHub and CRAN.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="man/figures/README-gg_eq_curve_2-1.png" class="img-fluid figure-img" style="width:100.0%" alt="Equity curve 2:"></p>
+<figcaption>Equity curve 2/2)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="man/figures/README-gg_trd_buf_param-1.png" class="img-fluid figure-img" style="width:100.0%" alt="Trade buffer parameter:"></p>
+<figcaption>Trade buffer parameter</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="man/figures/README-gg_turnover-1.png" class="img-fluid figure-img" style="width:100.0%" alt="Trade buffer parameter:"></p>
+<figcaption>Trade buffer parameter</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="man/figures/README-gg_orig_yes_cost-1.png" class="img-fluid figure-img" style="width:100.0%" alt="Orig with costs."></p>
+<figcaption>Orig with costs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="man/figures/README-gg_returns_plot-1.png" class="img-fluid figure-img" style="width:100.0%" alt="Returns plot."></p>
+<figcaption>Returns</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="man/figures/README-gg_weights_plot-1.png" class="img-fluid figure-img" style="width:100.0%" alt="weights plot."></p>
+<figcaption>weights</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="man/figures/README-gg_rets_wghts-1.png" class="img-fluid figure-img" style="width:100.0%" alt="weights plot."></p>
+<figcaption>Returns and weights</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 
