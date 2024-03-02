@@ -16,6 +16,6 @@ perps <- targets::tar_read(perps_all)
 perps %>% glimpse()
 perps %>% pull(date) %>% range()
 perps %>%
-  filter(date > "2022-12-31") ->
-  perps_2301_2402
-usethis::use_data(perps_2301_2402, overwrite = TRUE)
+  filter(date > "2023-08-31") ->
+  perps_2308_2402
+usethis::use_data(perps_2308_2402, overwrite = TRUE)
