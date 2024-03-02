@@ -14,7 +14,7 @@ website:
       - README.qmd
       - index.qmd
       # - talks.qmd
-      # - about.qmd
+      - about.qmd
 
 format:
   html:

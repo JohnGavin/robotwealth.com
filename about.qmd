@@ -2,8 +2,17 @@
 title: "About"
 ---
 
-About this site
+## About this site
 
-```{r}
-1 + 1
+```{r add}
+1 + 2
 ```
+
+## Examples
+```{r robotwealth.com, eval = FALSE}
+library(robotwealth.com)
+perps_2308_2402
+stablecoins
+```
+
+
