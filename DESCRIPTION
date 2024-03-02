@@ -37,5 +37,5 @@ Imports:
     tidyfit,
     utils
 Depends: 
-    R (>= 4.3)
+    R (>= 4.2)
 LazyData: true

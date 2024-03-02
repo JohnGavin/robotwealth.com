@@ -18,12 +18,12 @@
 #'   \item{funding_rate}{flow related columns}
 #' }
 #' The data is date-restricted - from
-#'  2023-01-01 to 2024-02-13,
-#'  to limit package size.
+#'  2023-08-31 to 2024-02-13,
+#'  to meet devtools::check() folder size >1Mb warnings.
 #' A larger tibble is available via
 #' `targets::tar_read(perps_all)` -
 #' see ./data-raw/DATASET.R.
 #' This covers the period 2019-09-11 to 2024-02-13.
 #'
 #' @source <https://github.com/Robot-Wealth/r-quant-recipes/raw/master/quantifying-combining-alphas/binance_perp_daily.csv>
-"perps_2301_2402"
+"perps_2308_2402"
