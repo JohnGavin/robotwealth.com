@@ -31,6 +31,7 @@ format:
     # df-print: paged
     toc: true
     code-fold: true
+    code-summary: "Show code"
     # section-numbering: 1.1.a
     number-sections: true
     # css: styles.css
@@ -58,7 +59,7 @@ knitr:
   # https://quarto.org/docs/computations/r.html#knitr-options
   opts_chunk: 
     # https://yihui.org/knitr/options/
-    collapse: true
+    code-fold: true
     comment: "#>"
     # # https://quarto.org/docs/computations/execution-options.html#figure-options
     fig.path: "man/figures/README-"
@@ -90,7 +91,7 @@ knitr:
 # https://quarto.org/docs/computations/r.html#chunk-options
 # #| fig-cap: !expr 'paste("Air", "Quality")'
 #| eval: false
-#| collapse: true
+#| code-fold: true
 #| label: quarto cli
 #| echo: true
 # system(" quarto preview README.qmd --to default ") # --no-watch-inputs --no-browse
@@ -155,7 +156,6 @@ devtools::install_github("JohnGavin/robotwealth.com")
 
 ```{r tree}
 #| code-fold: true
-#| collapse: true
 # output: asis
 pacman::p_load(dplyr, stringr, fs)
 excl <- "(figures)|(result)|(objects)|[.](md)|[.](htm)|[.](png)|(files)|(meta)|(old)"
@@ -185,7 +185,6 @@ incl %>%
 ```{r tar_make}
 #| echo: false
 #| code-fold: true
-#| collapse: true
 
 # library(robotwealth.com)
 pacman::p_load(targets)
@@ -193,7 +192,7 @@ pacman::p_load(targets)
 scr <- "exp_ret_mdl.R"
 str <- "exp_ret_mdl_store"
 targets::tar_config_set(script = scr, store = str)
-targets::tar_make(callr_function = NULL)  
+targets::tar_make(callr_function = NULL)
 ```
 
 ### Print data
@@ -251,7 +250,7 @@ tar_read(gg_rets_wghts)
 
 ```{r sessionInfo}
 #| eval: true
-#| collapse: true
+#| code-fold: true
 #| label: sessionInfo
 #| echo: true
 # sessionInfo
@@ -283,7 +282,7 @@ This is a block with gray background and slightly rounded corners.
 R.version.string
 ```
 ```{r reticulate}
-#| collapse: true
+#| code-fold: true
 library(reticulate)
 py_config()
 py_discover_config()
