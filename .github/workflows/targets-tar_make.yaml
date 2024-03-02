@@ -1,5 +1,6 @@
-# Inspired by the template in the {targets} package
-# https://github.com/ropensci/targets/blob/3b16f37ba5cdca710adbb81c2301f6b1d7432cfb/inst/templates/github_actions.yaml
+# https://github.com/b-rodrigues/nix_targets_pipeline/blob/master/.github/workflows/run-pipeline.yaml
+#   Inspired by the template in the {targets} package
+#   https://github.com/ropensci/targets/blob/3b16f37ba5cdca710adbb81c2301f6b1d7432cfb/inst/templates/github_actions.yaml
 
 # This file is licensed under the MIT
 # Copyright © 2023 Bruno Rodrigues and Philipp Baumann
@@ -21,7 +22,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-name: run-pipeline
+name: targets-tar_make.yaml
 
 on:
   push:
@@ -105,7 +106,8 @@ jobs:
           do
             git add --force $file
           done
-          git commit -am "Run pipeline"
+          git commit -am "Run targets-tar_make.yaml"
+          git pull
           git push origin targets-tar_make
 
       - name: Prepare failure artifact
