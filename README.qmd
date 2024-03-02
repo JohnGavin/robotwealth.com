@@ -277,6 +277,21 @@ See below (when-format="md") for  README.html
 ::: {.block fill="luma(230)" inset="8pt" radius="4pt"}
 
 This is a block with gray background and slightly rounded corners.
+```{r R.version.string}
+R.version.string
+```
+```{r reticulate}
+#| collapse: true
+library(reticulate)
+py_config()
+py_discover_config()
+py_version()
+```
+
+```{python sys.version}
+import sys
+print(sys.version)
+```
 
 https://quarto.org/docs/output-formats/typst.html#typst-blocks
 
