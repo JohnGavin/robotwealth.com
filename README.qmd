@@ -20,7 +20,8 @@ format:
   typst:
     keep-typ: false
     toc: true
-    section-numbering: 1.1.a
+    number-sections: false
+    # section-numbering: 1.1.a
     columns: 2
   html:
   # https://quarto.org/docs/computations/r.html#data-frames
@@ -30,6 +31,7 @@ format:
     # df-print: paged
     toc: true
     code-fold: true
+    # section-numbering: 1.1.a
     number-sections: true
     # css: styles.css
 # output: github_document # /html_document # NB: OLD Rmarkdown
