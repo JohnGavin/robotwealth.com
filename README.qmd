@@ -66,13 +66,13 @@ knitr:
 # https://quarto.org/docs/computations/python.html
 # jupyter: python3
 #
+# Quarto Publish publish.yml
 # quarto::quarto_render("README.qmd", output_format = "all")
 # quarto render README.qmd --to html,gfm,
 # quarto typst compile README.typ
 # 
 # https://quarto.org/docs/publishing/github-pages.html
-# quarto publish gh-pages README.qmd --no-prompt # --to index.html? 
-# quarto publish gh-pages --no-prompt
+# quarto publish gh-pages README.qmd --no-prompt --to index.html 
 ---
 
 
@@ -100,17 +100,28 @@ knitr:
 #   out.width = "100%")
 ```
 
-# robotwealth.com
 
 <!-- badges: start -->
 
 <!-- badges: end -->
 
+Some text
+[in HTML.]{.content-visible when-format="html"}
+[in PDF.]{.content-visible when-format="pdf"}
+
+::: {.content-visible when-format="md"}
+<!-- 
+For README.md only (when-format="md")
+See below (when-format="html") for  README.html
+-->
+
+# robotwealth.com
+
 The goal of robotwealth.com is build a `{targets}` pipeline of a blog post from robotwealth.com.
 
 -   [https://robotwealth.com/how-to-model-features-as-expected-returns/]
 
-# expected return models
+## expected return models
 
 ./R/robotwealth.com/expected_returns_models.R
 
@@ -145,9 +156,11 @@ devtools::install_github("JohnGavin/robotwealth.com")
 #| collapse: true
 # output: asis
 pacman::p_load(dplyr, stringr, fs)
-regex <- "(figures)|(result)|(objects)|[.](md)|[.](htm)|[.](png)|(files)|(meta)|(old)"
-regex %>% 
-  fs::dir_tree(regexp = ., invert = T, recurse = F)
+excl <- "(figures)|(result)|(objects)|[.](md)|[.](htm)|[.](png)|(files)|(meta)|(old)"
+incl <- "(A-Z)|(R)|(data)|(README)|[.](md)|[.](htm)|[.](yaml)|[.](yml)|[.](qmd)|[.](nix)|[.](R)"
+incl %>% 
+  fs::dir_tree(regexp = ., invert = F, recurse = F) %>% 
+  head(20)
 ```
 
 ### File sizes
@@ -247,17 +260,19 @@ tar_read(gg_rets_wghts)
 echo "foo" 
 ```
 
-Some text
-[in HTML.]{.content-visible when-format="html"}
-[in PDF.]{.content-visible when-format="pdf"}
-
+:::
 
 ::: {.content-visible when-format="html"}
+<!-- 
+For README.md only (when-format="html")
+See below (when-format="md") for  README.html
+-->
 
-Will only appear in HTML.
-https://quarto.org/docs/authoring/conditional.html
+
 
 :::
+
+# End
 
 ::: {.block fill="luma(230)" inset="8pt" radius="4pt"}
 

@@ -3,8 +3,16 @@ on:
   push:
     branches: main
 
-name: Quarto Publish
-
+name: Quarto publish.yml
+# Is publish.yml/GH pages linked to workflows/publish.yml?
+# https://github.com/JohnGavin/robotwealth.com/actions/workflows/publish.yml
+# Is publish.yml/GH pages linked to pages-build-deployment?
+#   https://github.com/JohnGavin/robotwealth.com/actions/workflows/pages/pages-build-deployment
+# quarto::quarto_render("README.qmd", output_format = "all")
+# quarto render README.qmd --to html,gfm,
+# quarto typst compile README.typ
+# https://quarto.org/docs/publishing/github-pages.html
+# quarto publish gh-pages README.qmd --no-prompt --to index.html
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
