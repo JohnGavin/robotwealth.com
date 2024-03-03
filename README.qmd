@@ -1,7 +1,11 @@
 ---
+# Quarto Publish publish.yml
 # quarto::quarto_render("README.qmd", output_format = "all")
 # quarto render README.qmd --to html,gfm
 # quarto typst compile README.typ
+# 
+# https://quarto.org/docs/publishing/github-pages.html#github-action
+# quarto publish gh-pages README.qmd --no-prompt # --to index.html 
 title: pipeline for robotweath.com post
 description: targets, webR and dashboard
 format:
@@ -14,13 +18,16 @@ format:
      # - reddit
      - icon: gitlab
        href: https://gitlab.com/johngavin/robotweath.com
-  # https://quarto.org/docs/output-formats/typst.html#overview
-  # ~/Documents_/note_taking_atom/projects/rix/quarto_typst.md
+  # # https://quarto.org/docs/output-formats/typst.html#overview
+  # # ~/Documents_/note_taking_atom/projects/rix/quarto_typst.md
   # Typst creates PDF output
   typst:
-    keep-typ: false
+    keep-typ: true
+    toc-title: Contnts
     toc: true
-    section-numbering: 1.1.a
+    toc-depth: 2
+    number-sections: false
+    # section-numbering: 1.1.a
     columns: 2
   html:
   # https://quarto.org/docs/computations/r.html#data-frames
@@ -30,9 +37,12 @@ format:
     # df-print: paged
     toc: true
     code-fold: true
+    code-summary: "Show code"
+    fontsize: "15pt"
+    # section-numbering: 1.1.a
     number-sections: true
-    # css: styles.css
-# output: github_document # /html_document # NB: OLD Rmarkdown
+    css: styles.css
+output: github_document # /html_document # NB: OLD Rmarkdown
 filters:
   - webr
 webr:
@@ -45,34 +55,30 @@ webr:
   # - "igraph"
   # - "ggdag"
 execute:
-  echo: false
+  echo: true
   error: true
+  warning: true
 # embed-resources: true
 editor: source
 # Quarto with R => need rmarkdown => knitr engine
-engine: knitr
-knitr: 
-  # also global Knitr options using opts_knit
-  # https://quarto.org/docs/computations/r.html#knitr-options
-  opts_chunk: 
-    # https://yihui.org/knitr/options/
-    collapse: true
-    comment: "#>"
-    # # https://quarto.org/docs/computations/execution-options.html#figure-options
-    fig.path: "man/figures/README-"
-    out.width: "100%"
-    R.options:
-      knitr.graphics.auto_pdf: true
-# https://quarto.org/docs/computations/python.html
-# jupyter: python3
-#
-# Quarto Publish publish.yml
-# quarto::quarto_render("README.qmd", output_format = "all")
-# quarto render README.qmd --to html,gfm,
-# quarto typst compile README.typ
-# 
-# https://quarto.org/docs/publishing/github-pages.html
-# quarto publish gh-pages README.qmd --no-prompt --to index.html 
+# engine: knitr
+# knitr: 
+#   # also global Knitr options using opts_knit
+#   # https://quarto.org/docs/computations/r.html#knitr-options
+#   opts_chunk: 
+#     # https://yihui.org/knitr/options/
+#     code-fold: true
+#     comment: "#>"
+#     # # https://quarto.org/docs/computations/execution-options.html#figure-options
+#     fig.path: "man/figures/README-"
+#     out.width: "100%"
+#     dev: "cairo_pdf"
+#     R.options:
+#       knitr.graphics.auto_pdf: true
+# # https://quarto.org/docs/computations/python.html
+# # jupyter: python3
+# #
+
 ---
 
 
@@ -84,21 +90,6 @@ knitr:
   ~/Documents_GitHub/ibrokers/vignettes/webr_dag_golem_owl.qmd
 --->
 
-```{r quarto cli, include = FALSE}
-# https://quarto.org/docs/computations/r.html#chunk-options
-# #| fig-cap: !expr 'paste("Air", "Quality")'
-#| eval: false
-#| collapse: true
-#| label: quarto cli
-#| echo: true
-# system(" quarto preview README.qmd --to default ") # --no-watch-inputs --no-browse
-# 
-# NB: knitr::opts_chunk$set in yaml header above
-# knitr::opts_chunk$set( # now in yaml above
-#   collapse = TRUE, comment = "#>",
-#   fig.path = "man/figures/README-",
-#   out.width = "100%")
-```
 
 
 <!-- badges: start -->
@@ -108,10 +99,11 @@ knitr:
 Some text
 [in HTML.]{.content-visible when-format="html"}
 [in PDF.]{.content-visible when-format="pdf"}
+[in GH markdown]{.content-visible when-format="gmd"}
 
-::: {.content-visible when-format="md"}
+::: {.content-visible when-format="gmd"}
 <!-- 
-For README.md only (when-format="md")
+For README.md only (when-format="gmd")
 See below (when-format="html") for  README.html
 -->
 
@@ -147,13 +139,12 @@ Install the development version of robotwealth.com from [GitHub](https://github.
 devtools::install_github("JohnGavin/robotwealth.com")
 ```
 
-## Project structure
+## Project files
 
-### Tree structure
+### File structure
 
 ```{r tree}
 #| code-fold: true
-#| collapse: true
 # output: asis
 pacman::p_load(dplyr, stringr, fs)
 excl <- "(figures)|(result)|(objects)|[.](md)|[.](htm)|[.](png)|(files)|(meta)|(old)"
@@ -172,18 +163,17 @@ incl %>%
     as.Date(modification_time)) %>% 
   select(path, size, modify_date) %>% 
   filter(path %>% 
-    str_detect(pattern = regex, negate = T)) %>% 
-   arrange(desc(size))
+    str_detect(pattern = incl, negate = F)) %>% 
+  arrange(desc(size))
 ```
 
-## Pipeline example
+## Pipelines
 
 ### `targets::tar_make`
 
-```{r tar_make}
+```{r tar_config_set}
 #| echo: false
 #| code-fold: true
-#| collapse: true
 
 # library(robotwealth.com)
 pacman::p_load(targets)
@@ -191,7 +181,12 @@ pacman::p_load(targets)
 scr <- "exp_ret_mdl.R"
 str <- "exp_ret_mdl_store"
 targets::tar_config_set(script = scr, store = str)
-targets::tar_make(callr_function = NULL)  
+```
+Targets code: `{r} scr`.\
+Targets store: `{r} str`.
+
+```{r tar_make}
+targets::tar_make(callr_function = NULL)
 ```
 
 ### Print data
@@ -206,7 +201,8 @@ tar_read(perps_all)
 # TODO: link each plot to 
 # https://robotwealth.com/how-to-model-features-as-expected-returns/
 #| label: gg_eq_curve_1 sdfsdf
-#| fig-cap: "Equity curve 1/2)"
+#| fig-cap: Equity crv !expr 'paste("1", "2", sep = "/")'
+# | fig-cap: "Equity curve 1/2)"
 #| fig-alt: "Equity curve 1:"
 #| echo: false
 tar_read(gg_eq_curve_1)
@@ -249,15 +245,15 @@ tar_read(gg_rets_wghts)
 
 ```{r sessionInfo}
 #| eval: true
-#| collapse: true
+#| code-fold: true
 #| label: sessionInfo
 #| echo: true
-# sessionInfo
-# 
+sessionInfo()
 ```
 
-```{bash}
+```{bash echo foo}
 echo "foo" 
+uname -r # Linux kernel version
 ```
 
 :::
@@ -265,14 +261,39 @@ echo "foo"
 ::: {.content-visible when-format="html"}
 <!-- 
 For README.md only (when-format="html")
-See below (when-format="md") for  README.html
+See below (when-format="gmd") for  README.html
 -->
 
+<!-- 
 
+``` 
+{r reticulate, eval = FALSE}
+#| code-fold: true
+#| eval: false
+# if (!requireNamespace(reticulate)) 
+#   install.packages("reticulate")
+# library(reticulate)
+# reticulate::py_config()
+# reticulate::py_discover_config()
+# # renv::use_python() https://blog.rstudio.com/2019/11/06/renv-project-environments-for-r/#Integration_with_Python
+# reticulate::py_version()
+# TODO: v nix install?
+# py_install(c("polars"))
+# py_run_string('import polars') # fails
+# repl_python() ; import polars # fails
+```
+
+```
+{python sys.version, eval = FALSE}
+#| eval: false
+# import sys
+# print(sys.version)
+```
+-->
 
 :::
 
-# End
+# End page 1
 
 ::: {.block fill="luma(230)" inset="8pt" radius="4pt"}
 
@@ -280,19 +301,24 @@ This is a block with gray background and slightly rounded corners.
 ```{r R.version.string}
 R.version.string
 ```
-```{r reticulate}
-#| collapse: true
-library(reticulate)
-py_config()
-py_discover_config()
-py_version()
-```
 
-```{python sys.version}
-import sys
-print(sys.version)
-```
 
 https://quarto.org/docs/output-formats/typst.html#typst-blocks
 
 :::
+
+
+```{r quarto cli, include = FALSE}
+# https://quarto.org/docs/computations/r.html#chunk-options
+#| eval: false
+#| code-fold: true
+#| label: quarto cli
+#| echo: true
+# system(" quarto preview README.qmd --to default ") # --no-watch-inputs --no-browse
+# 
+# NB: knitr::opts_chunk$set in yaml header above
+# knitr::opts_chunk$set( # now in yaml above
+#   collapse = TRUE, comment = "#>",
+#   fig.path = "man/figures/README-",
+#   out.width = "100%")
+```
