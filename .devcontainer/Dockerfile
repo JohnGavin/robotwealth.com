@@ -2,7 +2,7 @@
 #   https://semaphoreci.com/blog/reduce-docker-image-size
 #
 ###
-# ln -Fs ~/Documents_GitHub/robotwealth.com/Dockerfile ~/Documents_GitHub/robotwealth.com/.devcontainer/Dockerfile
+# ln -Fs ~/Documents_GitHub/robotwealth.com/.devcontainer/proj.nix ~/Documents_GitHub/robotwealth.com/default.nix 
 # ls -lhrt ./.devcontainer/Dockerfile
 # MYDATA_DIR=/Users/johngavin/Datashare; export MYDATA_DIR
 # IP=$(ifconfig en0 | grep 'inet ' | awk '{print $2}'); export IP
@@ -40,7 +40,7 @@ WORKDIR /home/$DEV/
 COPY $DEV.nix ./$DEV.nix
 # create DEV user/group & build/run DEV image
 ARG RTEXT=' sessionInfo() ; system("ls -lahrt") ; getwd() '
-RUN nix-shell ./$DEV.nix --verbose --run " Rscript -e '$RTEXT' " >> ./sessionInfo_$DEV.txt
+RUN nix-shell ./$DEV.nix --verbose --run " Rscript -e '$RTEXT' " >> ./sessionInfo_$DEV.txt && nix-collect-garbage
 CMD ["radian"]
 # CMD ["R", "-e", "shiny::runApp('/home/app')"]
 
@@ -52,7 +52,7 @@ FROM image_dev AS image_proj
 ARG PROJ=proj
 COPY $PROJ.nix ./$PROJ.nix
 # build/run PROJ image
-RUN  nix-shell ./$PROJ.nix --run " Rscript -e '$RTEXT' " >> ./sessionInfo_$PROJ.txt
+RUN  nix-shell ./$PROJ.nix --run " Rscript -e '$RTEXT' " >> ./sessionInfo_$PROJ.txt && nix-collect-garbage
 CMD ["radian"]
 
 # docker images ttmmghmm/"$IMG"
@@ -60,11 +60,11 @@ CMD ["radian"]
 # docker push ttmmghmm/"$IMG":latest
 # docker pull ttmmghmm/"$IMG":latest
 # docker rmi ttmmghmm/nix_docker
-~/Downloads/dist_mac_m1/docker-slim \
-  build ttmmghmm/"$IMG"
-  --sensor-ipc-mode proxy \
-  --sensor-ipc-endpoint 172.17.0.1 \
-  --http-probe=false ttmmghmm/"$IMG" ;
+# ~/Downloads/dist_mac_m1/docker-slim \
+#  build ttmmghmm/"$IMG"
+#  --sensor-ipc-mode proxy \
+#  --sensor-ipc-endpoint 172.17.0.1 \
+#  --http-probe=false ttmmghmm/"$IMG" ;
 # proj before 5,053,249,935
 
 # TODO: 'addgroup' not valid on nixos?
