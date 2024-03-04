@@ -56,7 +56,8 @@ FROM image_dev AS image_proj
 ARG PROJ=proj
 COPY $PROJ.nix ./$PROJ.nix
 # build/run PROJ image
-RUN  nix-shell ./$PROJ.nix --run " Rscript -e '$RTEXT' " >> ./sessionInfo_$PROJ.txt # && nix-collect-garbage
+RUN  nix-shell ./$PROJ.nix --run " Rscript -e '$RTEXT' " >> ./sessionInfo_$PROJ.txt 
+
 # CMD ["zsh"]
 # CMD ["radian --vanilla"]
 
