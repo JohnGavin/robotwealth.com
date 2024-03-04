@@ -51,7 +51,7 @@ jobs:
 
       - name: Build development environment
         run: |
-          nix-build
+          nix-build ./.devcointai
 
       - name: Check if previous runs exists
         id: runs-exist
