@@ -5,8 +5,8 @@
 	"build": {
 		"dockerfile": "Dockerfile",
 		"args": {
-		  //"DEV": "dev"
-		  "PROJ": "proj"
+		  "DEV": "dev"
+		  //"PROJ": "proj"
 			// Update VARIANT to pick a R version: 4, 4.2, 4.1, 4.0
 			//"VARIANT": "4.2",
 			// Start with a minimal image (rocker/r-ver) or a expanded image.
