@@ -40,20 +40,25 @@ WORKDIR /home/$DEV/
 COPY $DEV.nix ./$DEV.nix
 # create DEV user/group & build/run DEV image
 ARG RTEXT=' sessionInfo() ; system("ls -lahrt") ; getwd() '
-RUN nix-shell ./$DEV.nix --verbose --run " Rscript -e '$RTEXT' " >> ./sessionInfo_$DEV.txt && nix-collect-garbage
-CMD ["radian"]
+RUN nix-shell ./$DEV.nix --verbose --run " Rscript -e '$RTEXT' " >> ./sessionInfo_$DEV.txt # && nix-collect-garbage
+# 10 mins / 4.66GB 
+# -> 634MB nix-collect-garbage but radian not found?
+# https://www.reddit.com/r/NixOS/comments/mndp6a/garbage_collection/
+# CMD ["radian --vanilla"]
 # CMD ["R", "-e", "shiny::runApp('/home/app')"]
 
 # Stage Two: Create project/package image
 # IMG=proj
 # docker build -f Dockerfile --target image_$IMG -t ttmmghmm/$IMG .
 # 2 mins / 5gb
+
 FROM image_dev AS image_proj
 ARG PROJ=proj
 COPY $PROJ.nix ./$PROJ.nix
 # build/run PROJ image
-RUN  nix-shell ./$PROJ.nix --run " Rscript -e '$RTEXT' " >> ./sessionInfo_$PROJ.txt && nix-collect-garbage
-CMD ["radian"]
+RUN  nix-shell ./$PROJ.nix --run " Rscript -e '$RTEXT' " >> ./sessionInfo_$PROJ.txt # && nix-collect-garbage
+# CMD ["zsh"]
+# CMD ["radian --vanilla"]
 
 # docker images ttmmghmm/"$IMG"
 # echo "$DOCKER_PSWD" | docker login -u ttmmghmm --password-stdin
