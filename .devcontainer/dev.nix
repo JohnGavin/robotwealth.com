@@ -18,7 +18,7 @@
 let
  pkgs = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/fa9a51752f1b5de583ad5213eb621be071806663.tar.gz") {};
  rpkgs = builtins.attrValues {
-  inherit (pkgs.rPackages) devtools dplyr fs ggplot2 pacman purrr quarto readr reticulate stringr tarchetypes targets tidyr visNetwork;
+  inherit (pkgs.rPackages) devtools dplyr fs ggplot2 pacman purrr quarto readr reticulate rmarkdown stringr tarchetypes targets tidyr visNetwork;
 };
  git_archive_pkgs = [(pkgs.rPackages.buildRPackage {
     name = "rix";
