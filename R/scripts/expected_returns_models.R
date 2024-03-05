@@ -107,8 +107,8 @@ targets::tar_script({
     # sandwich: robust standard errors
     # & avoid using mdl coefs on their own fitted data
     sandwich, lmtest, tidyfit,
-    tibbletime, roll, patchwork, rsims,
-    tarchetypes, fs,
+    tibbletime, roll, rsims,
+    fs,
     glue, here,
     # from tidyverse,
     lubridate, stringr, dplyr, purrr, readr, tidyr, tibble, ggplot2 #  tidyverse, lubridate forcats

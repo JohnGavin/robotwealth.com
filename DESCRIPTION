@@ -19,6 +19,7 @@ Suggests:
     tibble,
     tidyr
 Imports: 
+    rsims,
     dplyr,
     fs,
     ggplot2,

@@ -8,6 +8,11 @@
 # automated by usethis::use_import_from()
 # .../rix/inst/qmd/usethis_targets.qmd
 ## usethis namespace: start
+##
+
+# ' @importFrom tarchetypes
+# ' @importFrom patchwork
+#' @importFrom rsims fixed_commission_backtest_with_funding
 #' @importFrom dplyr filter
 #' @importFrom dplyr group_by
 #' @importFrom dplyr left_join
