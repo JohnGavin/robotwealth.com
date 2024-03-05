@@ -248,12 +248,13 @@ tar_read(gg_rets_wghts)
 #| code-fold: true
 #| label: sessionInfo
 #| echo: true
-sessionInfo()
+quarto::quarto_version()
+sessioninfo::session_info(include_base = TRUE)
 ```
 
 ```{bash echo foo}
 echo "foo" 
-uname -r # Linux kernel version
+uname -a # Linux kernel version
 ```
 
 :::
