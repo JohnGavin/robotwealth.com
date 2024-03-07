@@ -12,7 +12,7 @@
 
 # ' @importFrom tarchetypes
 # ' @importFrom patchwork
-# ' @importFrom rsims fixed_commission_backtest_with_funding
+# '@importFrom rsims fixed_commission_backtest_with_funding
 #' @importFrom dplyr filter
 #' @importFrom dplyr group_by
 #' @importFrom dplyr left_join

@@ -38,4 +38,5 @@ Imports:
     utils
 Depends: 
     R (>= 4.2)
+Remotes: github::Robot-Wealth/rsims@*release
 LazyData: true
