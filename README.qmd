@@ -240,7 +240,8 @@ tar_read(gg_weights_plot)
 ```{r gg_rets_wghts}
 #| fig-cap: "Returns and weights"
 #| fig-alt: "weights plot."
-tar_read(gg_rets_wghts)
+# FIXME: patchwork not wokring
+#tar_read(gg_rets_wghts)
 ```
 
 ```{r sessionInfo}
