@@ -12,6 +12,8 @@
 
 # ' @importFrom patchwork
 # '@importFrom rsims fixed_commission_backtest_with_funding
+# tar_plan is in tarchetypes
+#   consider not using it to remove dependency on one function from tarchetypes?
 #' @importFrom tarchetypes tar_plan
 #' @importFrom dplyr filter
 #' @importFrom dplyr group_by
