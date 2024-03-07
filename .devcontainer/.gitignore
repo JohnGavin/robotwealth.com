@@ -2,4 +2,4 @@
 *.html
 *.code-workspace
 sessioninfo*
-^result*
+result*
