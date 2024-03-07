@@ -33,6 +33,7 @@ Imports:
     roll,
     stats,
     targets,
+    tarchetypes,
     tibbletime,
     tidyfit,
     utils

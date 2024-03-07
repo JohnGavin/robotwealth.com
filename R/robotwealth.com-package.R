@@ -10,9 +10,9 @@
 ## usethis namespace: start
 ##
 
-# ' @importFrom tarchetypes
 # ' @importFrom patchwork
 # '@importFrom rsims fixed_commission_backtest_with_funding
+#' @importFrom tarchetypes tar_plan
 #' @importFrom dplyr filter
 #' @importFrom dplyr group_by
 #' @importFrom dplyr left_join
