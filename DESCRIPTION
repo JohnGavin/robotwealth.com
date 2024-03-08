@@ -34,7 +34,7 @@ Imports:
     targets,
     tarchetypes,
     roll, tibbletime,
-    sandwich, lmtest, tidyfit,
+    tidyfit,
     utils
 Depends: 
     R (>= 4.2)

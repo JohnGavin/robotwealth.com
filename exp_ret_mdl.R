@@ -1,6 +1,7 @@
 library(targets)
 options(repr.plot.width = 14, repr.plot.height = 7, warn = -1)
-c("sandwich", "lmtest", "tidyfit", "tibbletime", "roll",
+c("tidyfit", "tibbletime", "roll",
+  # "sandwich", "lmtest",
      "rsims", "fs", "glue", "here", "lubridate", "stringr", "dplyr",
      "purrr", "readr", "tidyr", "tibble", "ggplot2", "rsims") %>%
   sapply(library,
