@@ -2,7 +2,7 @@
 #   https://semaphoreci.com/blog/reduce-docker-image-size
 #
 ###
-# ln -Fs ~/Documents_GitHub/robotwealth.com/.devcontainer/proj.nix ~/Documents_GitHub/robotwealth.com/default.nix 
+# ln -Fs ~/Documents_GitHub/robotwealth.com/.devcontainer/proj.nix ~/Documents_GitHub/robotwealth.com/default.nix
 # ls -lhrt ./.devcontainer/Dockerfile
 # MYDATA_DIR=/Users/johngavin/Datashare; export MYDATA_DIR
 # IP=$(ifconfig en0 | grep 'inet ' | awk '{print $2}'); export IP
@@ -29,31 +29,43 @@
 # docker build -f Dockerfile --target image_$IMG -t ttmmghmm/$IMG .
 # --build-arg DEV=dev --build-arg PROJ=proj --build-arg GITHUB_PAT=$GITHUB_PAT --build-arg USERNAME=rstudio .
 # 5 mins / 4.7gb
-FROM nixos/nix AS image_dev
-
+FROM nixos/nix AS image_proj
+# WARNING: ARG after FROM so image name always static
+ARG DEV_PROJ="proj"
+ARG DEV="$DEV_PROJ"
 # create Linux group and user, both called <pkg-name>.
 #   - instead of the default root user
 # https://hosting.analythium.io/dockerizing-shiny-applications/
-ARG DEV=dev
 # auto creates rix_dev folder
-WORKDIR /home/$DEV/
-COPY $DEV.nix ./$DEV.nix
+WORKDIR /home/"$DEV"/
+COPY "$DEV".nix ./"$DEV".nix
 # create DEV user/group & build/run DEV image
-ARG RTEXT=' sessionInfo() ; system("ls -lahrt") ; getwd() '
-RUN nix-shell ./$DEV.nix --verbose --run " Rscript -e '$RTEXT' " >> ./sessionInfo_$DEV.txt && nix-collect-garbage
-CMD ["radian"]
+ARG RTEXT=' sessioninfo::session_info(include_base = TRUE) ; system("ls -lahrt") ; quarto::quarto_version() ; getwd() '
+RUN nix-shell ./"$DEV".nix --verbose --run " Rscript -e '$RTEXT' " >> ./sessionInfo_"$DEV".txt # && nix-collect-garbage
+# 10 mins / 4.66GB
+# -> 634MB nix-collect-garbage but radian not found?
+# https://www.reddit.com/r/NixOS/comments/mndp6a/garbage_collection/
+# CMD ["radian --vanilla"]
 # CMD ["R", "-e", "shiny::runApp('/home/app')"]
 
 # Stage Two: Create project/package image
+# FIXME: Only copy what is needed from image_dev?
+#   image_proj 'result' link
+#     always _overwrites_ image_dev 'result'
+#   how to apped to image_dev 'result'?
+#
 # IMG=proj
 # docker build -f Dockerfile --target image_$IMG -t ttmmghmm/$IMG .
 # 2 mins / 5gb
-FROM image_dev AS image_proj
-ARG PROJ=proj
-COPY $PROJ.nix ./$PROJ.nix
-# build/run PROJ image
-RUN  nix-shell ./$PROJ.nix --run " Rscript -e '$RTEXT' " >> ./sessionInfo_$PROJ.txt && nix-collect-garbage
-CMD ["radian"]
+
+#FROM image_dev AS image_proj
+#ARG PROJ=$DEV_PROJ
+#COPY $PROJ.nix ./$PROJ.nix
+## build/run PROJ image
+#RUN  nix-shell ./$PROJ.nix --run " Rscript -e '$RTEXT' " >> ./sessionInfo_$PROJ.txt
+
+# CMD ["zsh"]
+# CMD ["radian --vanilla"]
 
 # docker images ttmmghmm/"$IMG"
 # echo "$DOCKER_PSWD" | docker login -u ttmmghmm --password-stdin

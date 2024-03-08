@@ -25,13 +25,13 @@ tar_feat_evol <- tar_plan( #----
     # let total expected return be xs return + ts return - allows time series expected return to tilt weights
     mutate(expected_ts_return = case_when(breakout_factor >= 5.5 ~ 0.002, TRUE ~ 0)) %>%
     ungroup(),
-  
+
   # long-short the xs expected return
   # layer ts expected return on top
   # position by expected return
-  
+
   # 1 in the numerator lets it get max 100% long due to breakout
-  
+
   strategy_df =
     exp_return_df %>%
     filter(date >= start_date) %>%
@@ -73,14 +73,14 @@ tar_feat_evol <- tar_plan( #----
       x = "Date",
       y = "Net Weight"
     ),
-  
+
   # FIXME: patchwork not working
-  gg_rets_wghts =
-    gg_returns_plot + gg_weights_plot +
-    plot_layout(heights = c(2, 1)),
+  #gg_rets_wghts =
+  #  gg_returns_plot + gg_weights_plot +
+  #  plot_layout(heights = c(2, 1)),
 ) # tar_feat_evol
 tar_rsims <- tar_plan(
-  # rsims: simulation given target weights and costs 
+  # rsims: simulation given target weights and costs
   # wrangle dfs into matrixes of target
   # positions, prices, and funding rates
   # get weights as a wide matrix
@@ -96,7 +96,7 @@ tar_rsims <- tar_plan(
     ans
   },
   backtest_weights_head = head(backtest_weights, c(5, 5)),
-  
+
   # get prices as a wide matrix
   # note that date column will get converted to unix timestamp
   backtest_prices = {
@@ -106,7 +106,7 @@ tar_rsims <- tar_plan(
       data.matrix()
   },
   backtest_prices_head = head(backtest_prices, c(5, 5)),
-  
+
   # get funding as a wide matrix
   # note that date column will get converted to unix timestamp
   backtest_funding = {
@@ -116,10 +116,10 @@ tar_rsims <- tar_plan(
       data.matrix()
   },
   backtest_funding_head = head(backtest_funding, c(5, 5)),
-  
+
   # cost-free sim trades frictionlessly into target positions
   # cost-free, no trade buffer
-  
+
   # simulation
   results_df_1 = {
     backtest_prices
@@ -137,19 +137,19 @@ tar_rsims <- tar_plan(
       # remove coins we don't trade from results
       drop_na(Value)
   },
-  
+
   # make a nice plot with some summary statistics
   # plot equity curve from output of simulation
   gg_eq_curve_1 =
     ggplot_equity_curve(results_df_1,
       commission_pct = prms_sim$commission_pct["no_csts_no_trd_bffr"]
     ),
-  
+
   # explore costs-turnover tradeoffs
   # TODO: add to prms_sim as a named vector?
   # with costs, no trade buffer
   # commission_pct_2 = 0.0015,
-  
+
   # # simulation
   results_df_2 = {
     # backtest_prices
@@ -160,7 +160,7 @@ tar_rsims <- tar_plan(
       trade_buffer = prms_sim$trade_buffer,
       initial_cash = prms_sim$initial_cash,
       margin = prms_sim$margin,
-      commission_pct = 
+      commission_pct =
         prms_sim$commission_pct["yes_csts_no_trd_bffr"],
       capitalise_profits = prms_sim$capitalise_profits
     ) %>%
@@ -172,9 +172,9 @@ tar_rsims <- tar_plan(
     commission_pct =
       prms_sim$commission_pct["yes_csts_no_trd_bffr"]
   ),
-  
-  # no-trade buffer heuristic 
-  # from the last article 
+
+  # no-trade buffer heuristic
+  # from the last article
   # minimum amount of trading to harness the edge
   # find appropriate trade buffer by optimising historical sharpe
   sharpes_trade_buffers = {
@@ -190,7 +190,7 @@ tar_rsims <- tar_plan(
           trade_buffer = trade_buffer, # prms_sim$trade_buffer,
           initial_cash = prms_sim$initial_cash,
           margin = prms_sim$margin,
-          commission_pct = 
+          commission_pct =
             prms_sim$commission_pct["no_csts_no_trd_bffr"],
           capitalise_profits = prms_sim$capitalise_profits
         ) %>%
@@ -229,7 +229,7 @@ tar_rsims <- tar_plan(
       trade_buffer = trade_buffer,
       initial_cash = prms_sim$initial_cash,
       margin = prms_sim$margin,
-      commission_pct = 
+      commission_pct =
         prms_sim$commission_pct["yes_csts_no_trd_bffr"],
       capitalise_profits = prms_sim$capitalise_profits
     ) %>%
@@ -238,7 +238,7 @@ tar_rsims <- tar_plan(
       drop_na(Value)
   },
   gg_orig_yes_cost = {
-    orig_res_with_costs %>% 
+    orig_res_with_costs %>%
       # Performance is a little higher
       # excludes first in-sample model estimation period
       ggplot_equity_curve(commission_pct = prms_sim$commission_pct["yes_csts_no_trd_bffr"])

@@ -3,11 +3,13 @@
 ^LICENSE\.md$
 ^data-raw$
 ^result$
-^sub_shell$
-^\.github$
+^tmp$
+# for github devcontainer dockerignore
+^\..+$
+# ^_site$ ^_.+\.yaml$ ^_.+\.yml$
+^_.*$
 ^_extensions$
 ^_freeze$
-^_.*$
 _files$
 \.quarto$
 \.css$
@@ -15,9 +17,9 @@ _files$
 \.qmd$
 \.nix$
 \.env$
+\.json$
 ^run
 ^exp_ret_mdl
 ^README
+^sub_shell
 
-^tmp$
-# ^_site$ ^_.+\.yaml$ ^_.+\.yml$

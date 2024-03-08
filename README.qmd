@@ -146,7 +146,11 @@ devtools::install_github("JohnGavin/robotwealth.com")
 ```{r tree}
 #| code-fold: true
 # output: asis
-pacman::p_load(dplyr, stringr, fs)
+c('dplyr', 'stringr', 'fs') %>% 
+  sapply(library, 
+    character.only = TRUE, 
+    quietly = TRUE) %>% 
+  invisible()
 excl <- "(figures)|(result)|(objects)|[.](md)|[.](htm)|[.](png)|(files)|(meta)|(old)"
 incl <- "(A-Z)|(R)|(data)|(README)|[.](md)|[.](htm)|[.](yaml)|[.](yml)|[.](qmd)|[.](nix)|[.](R)"
 incl %>% 
@@ -176,7 +180,7 @@ incl %>%
 #| code-fold: true
 
 # library(robotwealth.com)
-pacman::p_load(targets)
+library(targets)
 # targets setup
 scr <- "exp_ret_mdl.R"
 str <- "exp_ret_mdl_store"
@@ -240,7 +244,8 @@ tar_read(gg_weights_plot)
 ```{r gg_rets_wghts}
 #| fig-cap: "Returns and weights"
 #| fig-alt: "weights plot."
-tar_read(gg_rets_wghts)
+# FIXME: patchwork not wokring
+#tar_read(gg_rets_wghts)
 ```
 
 ```{r sessionInfo}
@@ -248,12 +253,13 @@ tar_read(gg_rets_wghts)
 #| code-fold: true
 #| label: sessionInfo
 #| echo: true
-sessionInfo()
+quarto::quarto_version()
+sessioninfo::session_info(include_base = TRUE)
 ```
 
 ```{bash echo foo}
 echo "foo" 
-uname -r # Linux kernel version
+uname -a # Linux kernel version
 ```
 
 :::

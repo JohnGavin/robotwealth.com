@@ -56,15 +56,16 @@ targets::tar_script(
       # user objective and set of constraints
       # by combining CVXR objects representing
       # constants, variables, and parameters
-      CVXR,
-      tarchetypes, fs,
+      # CVXR,     tarchetypes, patchwork,
+      fs,
       glue, here,
       # from tidyverse,
       lubridate, stringr, dplyr, purrr, readr, tidyr, tibble, ggplot2, #  tidyverse, lubridate forcats
-      tibbletime, roll, patchwork, rsims
+      tibbletime, roll, rsims
     )
-    pacman::p_load_current_gh("Robot-Wealth/rsims",
-      dependencies = TRUE)
+    # pacman::p_load_current_gh("Robot-Wealth/rsims",
+    #   dependencies = TRUE)
+    library(rsims)
     # ggplot chart options ----
     options(repr.plot.width = 14, repr.plot.height = 7, warn = -1)
     theme_set(theme_bw())
@@ -176,7 +177,7 @@ tar_objs <- tar_objects()
       negate = TRUE
     ) # %>% str_subset("^gg_", negate = TRUE)
 )
-length(tar_objs) 
+length(tar_objs)
 length(not_brnch)
 tar_load(not_brnch %>% all_of())
 mget(not_brnch) %>% str(max.level = 2, list.len = 6, give.attr = FALSE)
@@ -186,4 +187,4 @@ mget(not_brnch) %>% str(max.level = 2, list.len = 6, give.attr = FALSE)
 .packages()
 # print(targets::tar_read(group, branches = 2))
 data(mtcars)
-mtcars 
+mtcars

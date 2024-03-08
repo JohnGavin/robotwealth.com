@@ -30,12 +30,13 @@ Imports:
     magrittr,
     pacman,
     purrr,
-    roll,
     stats,
     targets,
-    tibbletime,
+    tarchetypes,
+    roll, tibbletime,
     tidyfit,
     utils
 Depends: 
     R (>= 4.2)
+Remotes: github::Robot-Wealth/rsims@*release
 LazyData: true

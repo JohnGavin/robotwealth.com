@@ -1,0 +1,5 @@
+/old/
+*.html
+*.code-workspace
+sessioninfo*
+result*
