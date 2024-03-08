@@ -20,6 +20,15 @@ let
  rpkgs = builtins.attrValues {
   inherit (pkgs.rPackages) Cairo devtools dplyr fs ggplot2 glue goodpractice here httpgd lmtest lubridate pacman patchwork purrr quarto readr reticulate rmarkdown roll rvest sandwich stringr tarchetypes targets tibbletime tidyfit tidyr visNetwork;
 };
+pypkgs = [ # pkgs.python311
+    (pkgs.python3.withPackages (python-pkgs: [
+      python-pkgs.numpy # not installed by pandas!?
+      python-pkgs.pandas
+      # python-pkgs.polars
+      python-pkgs.seaborn
+      python-pkgs.requests
+    ]))];
+
  git_archive_pkgs = [(pkgs.rPackages.buildRPackage {
     name = "rix";
     src = pkgs.fetchgit {
@@ -46,7 +55,8 @@ let
   }) ];
   system_packages = builtins.attrValues {
   inherit (pkgs) R glibcLocales nix cairo lazygit nano oh-my-zsh openssl quarto radianWrapper
-    python3 # python311Packages_polars
+  # python3-pandas
+  # rstudioWrapper
   ;
  };
   in
@@ -60,7 +70,7 @@ let
     LC_MEASUREMENT = "en_US.UTF-8";
 
     buildInputs = [ git_archive_pkgs rpkgs
-    system_packages
+    system_packages pypkgs
     ];
 
   }
