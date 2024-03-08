@@ -45,6 +45,7 @@ RUN nix-shell ./"$DEV".nix --verbose --run " Rscript -e '$RTEXT' " >> ./sessionI
 # 10 mins / 4.66GB
 # -> 634MB nix-collect-garbage but radian not found?
 # https://www.reddit.com/r/NixOS/comments/mndp6a/garbage_collection/
+CMD ["zsh"]
 # CMD ["radian --vanilla"]
 # CMD ["R", "-e", "shiny::runApp('/home/app')"]
 
