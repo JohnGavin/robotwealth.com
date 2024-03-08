@@ -1,6 +1,6 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
 .__global__|object|3c8d8c6823cd484e|||||||||||||||
-.Random.seed|object|89720090881ba0ef|||||||||||||||
+.Random.seed|object|b79d21697470e329|||||||||||||||
 aprms|stem|f0c9f5f9d3b17f81|6d46d39e1654c1ae|14c1f35d3d9d5f04|-336818899||t19789.9287653115s|401cb8fa9737627f|244|rds|local|vector|||0||
 backtest_funding|stem|f7d560a94dc5c10a|ef4e64169ded81c4|34ae2c9fe17a4336|-263244923||t19789.9292715245s|54d48a40fd55ac0c|184930|rds|local|vector|||0.011||
 backtest_funding_head|stem|fccd690ec21befb9|d276403b59bb1efd|3f702ed4bd62c481|-1461972841||t19789.9292795208s|0e56fdca6a5a4864|301|rds|local|vector|||0||
@@ -33,7 +33,7 @@ gg_univ_size|stem|fe843f80069edd0c|57ad67bb2446b87a|dc597e0d6ddc1346|-2137748734
 gg_weights_plot|stem|ff53e862370721a6|f5bf178b9a577944|34ae2c9fe17a4336|620292376||t19789.9292794473s|8ba182955e2c4397|4727696|rds|local|vector|||0.004||
 gg_xs_coefs_df|stem|b680c35db57f8c81|d4866dc7942f80aa|6335b8277eddb642|-354747925||t19789.9292673818s|2455fa2e7857568a|124932|rds|local|vector|||0.003||
 ggplot_equity_curve|function|82cbc93e393e79cb|||||||||||||||
-has_nix_path|object|df161ddba3dacc9e|||||||||||||||
+has_nix_path|object|909013909b1f03d4|||||||||||||||
 model_df|stem|0deda9f0aa4fa20a|0b9bf82a871f38ce|0e19be0c7337f6f5|-1301877780||t19789.9288571649s|5843a10ecb9a138a|4760654|rds|local|vector|||0.297||
 orig_res_with_costs|stem|4aedd8dc006ca4aa|38a272ee19e8094a|0fe1834f2fb6890b|2071973074||t19789.9292974621s|17f8346a4ae2b3f1|1421240|rds|local|vector|||0.12|NA present in funding rates consider replacing these values before continuing|
 perps_all|stem|87841720a63f10f7|930f2405a4e95bd4|7d6c77daf2158c9a|727177707||t19789.9288004422s|3e1e8e9c6418a2e9|8322681|rds|local|vector|||0||
@@ -51,7 +51,7 @@ sharpes_trade_buffers|stem|00677221c860021c|39920082f08682f3|e281ee62e8150d24|13
 source_dir_only|function|b8116af150a73261|||||||||||||||
 stables_llama|stem|68b9fb9f8b6ec711|4f934ea8ee705ca9|eb8101dcae3c7adf|-676271364||t19789.9288005576s|543785243dfaf17e|595|rds|local|vector|||0||
 stables_llama_lst|pattern|badf2229a12af170|e5c51672392405b2||1766749124||||595|rds|local|vector||stables_llama_lst_61b26602|0.098||
-stables_llama_lst_61b26602|branch|68b9fb9f8b6ec711|e5c51672392405b2|7db23f1097a0ea9c|-1074722797||t19789.930096457s|543785243dfaf17e|595|rds|local|vector|stables_llama_lst||0.148||
+stables_llama_lst_61b26602|branch|68b9fb9f8b6ec711|e5c51672392405b2|b3177f0f09f526d4|-1074722797||t19790.4751174418s|543785243dfaf17e|595|rds|local|vector|stables_llama_lst||0.186||
 start_date|stem|b995d09af2e140a1|d37e66b076902ec0|b3ab9220e54c1e42|-1229476776||t19789.9288510939s|6281f79619f6778a|80|rds|local|vector|||0.017||
 strategy_df|stem|8001fb986a8bc28b|2303a28301ac0dd9|a353f54d7283daa5|1729728734||t19789.9292712534s|3f3b657bf8644bb4|4606188|rds|local|vector|||0.106||
 tar_config_set_project|function|e4952e12c30502f2|||||||||||||||
@@ -68,9 +68,9 @@ ts_coefs_df|stem|c4bafed95d3541e7|50a6ecd62a7782dc|bcb6edf03ff81ed7|-1680762388|
 universe|stem|a64a4cae181f74cd|f623eed8262b7705|a296b26e71e516e6|388796318||t19789.9288209999s|0aac7dcd175cbefb|15315692|rds|local|vector|||0.271||
 url_csv|pattern|202178617ae8b4d5|fad9ece87db7a99b||-611177911||||0|url|local|vector||url_csv_db06cf58|0||
 url_csv_db06cf58|branch|cbc236ee005e2857|fad9ece87db7a99b|ef46db3751d8e999|961772401|https://github.com/Robot-Wealth/r-quant-recipes/raw/master/quantifying-combining-alphas/binance_perp_daily.csv|t19789.9287684103s||0|url|local|vector|url_csv||0||
-url_csv_files|stem|8aec32795444d4d0|7997b4ee55f7ac91|ef46db3751d8e999|-310003469||t19789.9300707404s|5a7113535e3388cd|147|rds|local|vector||url_csv_files_1eff4780|0||
-url_stables_llama|pattern|bee14af5be86ecbc|53e6a884da3f797a||-1894788112||||0|url|local|vector||url_stables_llama_6411c91e|0||
-url_stables_llama_6411c91e|branch|014477e31e833f3e|53e6a884da3f797a|ef46db3751d8e999|1284992639|https://stablecoins.llama.fi/stablecoins?includePrices=true|t19789.9300946767s||0|url|local|vector|url_stables_llama||0||
-url_stables_llama_files|stem|9a7b8c6cc4b46d73|52d6695ec070e871|ef46db3751d8e999|1452664436||t19789.9300707698s|f55bdaeb17afeaf9|102|rds|local|vector||url_stables_llama_files_ccf5a49e|0||
+url_csv_files|stem|8aec32795444d4d0|7997b4ee55f7ac91|ef46db3751d8e999|-310003469||t19790.4750288363s|5a7113535e3388cd|147|rds|local|vector||url_csv_files_1eff4780|0||
+url_stables_llama|pattern|b72bf788e35e8637|53e6a884da3f797a||-1894788112||||0|url|local|vector||url_stables_llama_6411c91e|0||
+url_stables_llama_6411c91e|branch|e02010d3927986ed|53e6a884da3f797a|ef46db3751d8e999|1284992639|https://stablecoins.llama.fi/stablecoins?includePrices=true|t19790.4751152047s||0|url|local|vector|url_stables_llama||0||
+url_stables_llama_files|stem|9a7b8c6cc4b46d73|52d6695ec070e871|ef46db3751d8e999|1452664436||t19790.4750288704s|f55bdaeb17afeaf9|102|rds|local|vector||url_stables_llama_files_ccf5a49e|0||
 xs_coefs|stem|114757642e3c7ee6|ab70ffd4bbd99555|5785c513ebf793fc|185890438||t19789.9292638522s|e540686f6fc6dcd2|13523|rds|local|vector|||11.874||
 xs_coefs_df|stem|0d7f275ab75d825c|ca96fcac2873ab85|b872c9fcd3570135|-832933656||t19789.9292640506s|0798ee5489bafd92|3087|rds|local|vector|||0.006||

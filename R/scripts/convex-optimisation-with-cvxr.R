@@ -63,8 +63,9 @@ targets::tar_script(
       lubridate, stringr, dplyr, purrr, readr, tidyr, tibble, ggplot2, #  tidyverse, lubridate forcats
       tibbletime, roll, rsims
     )
-    pacman::p_load_current_gh("Robot-Wealth/rsims",
-      dependencies = TRUE)
+    # pacman::p_load_current_gh("Robot-Wealth/rsims",
+    #   dependencies = TRUE)
+    library(rsims)
     # ggplot chart options ----
     options(repr.plot.width = 14, repr.plot.height = 7, warn = -1)
     theme_set(theme_bw())

@@ -111,10 +111,12 @@ targets::tar_script({
     fs,
     glue, here,
     # from tidyverse,
-    lubridate, stringr, dplyr, purrr, readr, tidyr, tibble, ggplot2 #  tidyverse, lubridate forcats
+    lubridate, stringr, dplyr, purrr, readr, tidyr, tibble, ggplot2, #  tidyverse, lubridate forcats
+    rsims
   )
-  pacman::p_load_current_gh("Robot-Wealth/rsims",
-    dependencies = TRUE)
+  # do NOT load in script - move to DESCRIPTIOn -> rix -> nixOS
+  # pacman::p_load_current_gh("Robot-Wealth/rsims",
+  #  dependencies = TRUE)
   # chart options
   theme_set(theme_bw())
   theme_update(text = element_text(size = 20))

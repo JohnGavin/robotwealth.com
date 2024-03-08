@@ -1,9 +1,16 @@
 library(targets)
 options(repr.plot.width = 14, repr.plot.height = 7, warn = -1)
-pacman::p_load(sandwich, lmtest, tidyfit, tibbletime, roll,
-    rsims, fs, glue, here, lubridate, stringr, dplyr,
-    purrr, readr, tidyr, tibble, ggplot2)
-pacman::p_load_current_gh("Robot-Wealth/rsims", dependencies = TRUE)
+c("sandwich", "lmtest", "tidyfit", "tibbletime", "roll",
+     "rsims", "fs", "glue", "here", "lubridate", "stringr", "dplyr",
+     "purrr", "readr", "tidyr", "tibble", "ggplot2", "rsims") %>%
+  sapply(library,
+    character.only = TRUE,
+    quietly = TRUE) %>%
+  invisible()
+# pacman::p_load(sandwich, lmtest, tidyfit, tibbletime, roll,
+#     rsims, fs, glue, here, lubridate, stringr, dplyr,
+#     purrr, readr, tidyr, tibble, ggplot2)
+# pacman::p_load_current_gh("Robot-Wealth/rsims", dependencies = TRUE)
 theme_set(theme_bw())
 theme_update(text = element_text(size = 20))
 get_prms <- function() {
