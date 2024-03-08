@@ -30,12 +30,11 @@ Imports:
     magrittr,
     pacman,
     purrr,
-    roll,
     stats,
     targets,
     tarchetypes,
-    tibbletime,
-    tidyfit,
+    roll, tibbletime,
+    sandwich, lmtest, tidyfit,
     utils
 Depends: 
     R (>= 4.2)
