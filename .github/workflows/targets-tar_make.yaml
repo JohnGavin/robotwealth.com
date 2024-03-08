@@ -78,8 +78,6 @@ jobs:
       - name: Run model
         run: |
           nix-shell default.nix --run "Rscript -e '{
-            #library(targets)
-            #library(tarchetypes)
             targets::tar_make(
               callr_function = NULL,
               script = \"exp_ret_mdl.R\",
