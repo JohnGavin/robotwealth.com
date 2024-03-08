@@ -46,6 +46,7 @@ let
   }) ];
   system_packages = builtins.attrValues {
   inherit (pkgs) R glibcLocales nix cairo lazygit nano oh-my-zsh openssl quarto radianWrapper
+    python3 # python311Packages_polars
   ;
  };
   in
