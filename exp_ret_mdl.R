@@ -1,12 +1,14 @@
-library(targets)
 options(repr.plot.width = 14, repr.plot.height = 7, warn = -1)
-c("tidyfit", "tibbletime", "roll",
-  # "sandwich", "lmtest",
-     "rsims", "fs", "glue", "here", "lubridate", "stringr", "dplyr",
-     "purrr", "readr", "tidyr", "tibble", "ggplot2", "rsims") %>%
+c(  "targets", "tarchetypes",
+    "tidyfit", "tibbletime", "roll",
+    # "sandwich", "lmtest",
+     "rsims", "fs", "glue", "here", "lubridate",
+    "stringr", "dplyr",
+     "purrr", "readr", "tidyr", "tibble", "ggplot2",
+    "rsims") |>
   sapply(library,
     character.only = TRUE,
-    quietly = TRUE) %>%
+    quietly = TRUE) |>
   invisible()
 # pacman::p_load(sandwich, lmtest, tidyfit, tibbletime, roll,
 #     rsims, fs, glue, here, lubridate, stringr, dplyr,
@@ -27,8 +29,8 @@ prms_sim <- list(initial_cash = 10000, fee_tier = 0, capitalise_profits = FALSE,
     trade_buffer = 0, commission_pct = c(yes_csts_no_trd_bffr = 0.0015,
         no_csts_no_trd_bffr = 0), margin = 0.05)
 source_dir_only <- function(path_rel = "R") {
-    fs::path_abs(path_rel) %>% fs::dir_ls(regexp = "\\.R$") %>%
-        str_subset("^zzz.[Rr]$|_targets.[Rr]$", negate = TRUE) %>%
+    fs::path_abs(path_rel) |> fs::dir_ls(regexp = "\\.R$") |>
+        str_subset("^zzz.[Rr]$|_targets.[Rr]$", negate = TRUE) |>
         walk(source)
 }
 source_dir_only("R")
