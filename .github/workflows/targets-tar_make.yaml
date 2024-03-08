@@ -49,7 +49,7 @@ jobs:
       - name: Nix cache
         uses: DeterminateSystems/magic-nix-cache-action@main
 
-      - name: Build development environment
+      - name: Build environment from ./default.nix
         run: |
           nix-build
 
