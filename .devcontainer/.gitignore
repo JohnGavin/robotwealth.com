@@ -3,3 +3,4 @@
 *.code-workspace
 sessioninfo*
 result*
+_libs
