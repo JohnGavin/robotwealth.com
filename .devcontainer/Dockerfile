@@ -1,9 +1,9 @@
 FROM nixos/nix:latest AS builder
 
-RUN nix \
-    --extra-experimental-features "nix-command flakes" \
-    --option filter-syscalls false \
-    build
+#RUN nix \
+#    --extra-experimental-features "nix-command flakes" \
+#    --option filter-syscalls false \
+#    build
 RUN nix-shell -p 'rWrapper.override{packages = [ rPackages.dplyr ];}'
 
 # FROM mcr.microsoft.com/devcontainers/javascript-node:0-18
