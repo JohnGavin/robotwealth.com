@@ -6,6 +6,7 @@
 		"dockerfile": "Dockerfile",
 		"args": {
 			"DISPLAY": "192.168.55.101" //,
+	, "runArgs": ["--userns=host"] 
 		//   //"DEV_PROJ": "proj",
 		//   //"DEV": "dev",
 		//   //"PROJ": "proj"
