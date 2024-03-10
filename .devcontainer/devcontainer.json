@@ -5,8 +5,7 @@
       "multiUser": true,
       "version": "latest"
     }
-  }
-}
+  },
 
 // {
 //   "image": "mcr.microsoft.com/devcontainers/base:alpine",
@@ -65,29 +64,29 @@
 // // 		}
 // // 	// },
 // // }}
-// 	// Configure tool-specific properties.
-// 	"customizations": {
-// 		// Configure properties specific to VS Code.
-// 		"vscode": {
-// 			// Set *default* container specific settings.json values on container create.
-// 			"settings": {
-// 				"r.rterm.linux": "/usr/local/bin/radian",
-// 				"r.bracketedPaste": true,
-// 				"r.plot.useHttpgd": true,
-// 				"[r]": {
-// 					"editor.wordSeparators": "`~!@#%$^&*()-=+[{]}\\|;:'\",<>/?"
-// 				}
-// 			},
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Set *default* container specific settings.json values on container create.
+			"settings": {
+				"r.rterm.linux": "/usr/local/bin/radian",
+				"r.bracketedPaste": true,
+				"r.plot.useHttpgd": true,
+				"[r]": {
+					"editor.wordSeparators": "`~!@#%$^&*()-=+[{]}\\|;:'\",<>/?"
+				}
+			},
 
 
-// 			// Add the IDs of extensions you want installed when the container is created.
-// 			"extensions": [
-//       			"dbaeumer.vscode-eslint",
-// 				"reditorsupport.r",
-// 				"rdebugger.r-debugger"
-// 			]
-// 		}
-// 	}
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+      			"dbaeumer.vscode-eslint",
+				"reditorsupport.r",
+				"rdebugger.r-debugger"
+			]
+		}
+	}
 
 // 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 // 	// "forwardPorts": [],
@@ -98,4 +97,4 @@
 
 // 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 // 	// "remoteUser": "rstudio"
-// }
+}
