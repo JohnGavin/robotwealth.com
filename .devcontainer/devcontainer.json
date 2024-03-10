@@ -65,10 +65,12 @@
 				"rdebugger.r-debugger"
 			]
 		}
-	}
+	},
 
-  // Use 'postCreateCommand' to run commands after the container is created.
-  // "postCreateCommand": "go version",
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "bash" 
+	//"R --vanilla",
+
 }
 
 
