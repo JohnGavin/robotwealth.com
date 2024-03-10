@@ -5,8 +5,8 @@
 	"build": {
 		"dockerfile": "Dockerfile",
 		"args": {
-			"DISPLAY": "192.168.55.101" //,
-	, "runArgs": ["--userns=host"] 
+			//"DISPLAY": "192.168.55.101" //,
+			"runArgs": ["--privileged"] // ["--userns=host"] 
 		//   //"DEV_PROJ": "proj",
 		//   //"DEV": "dev",
 		//   //"PROJ": "proj"
