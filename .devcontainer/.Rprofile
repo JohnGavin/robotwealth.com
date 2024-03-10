@@ -20,11 +20,15 @@
         }
         rm(old_path, nix_path)
     }
+    
     if (isTRUE(is_nixr)) {
         current_paths <- .libPaths()
-        userlib_paths <- Sys.getenv("R_LIBS_USER")
-        user_dir <- grep(paste(userlib_paths, collapse = "|"), current_paths)
-        new_paths <- current_paths[-user_dir]
+        userlib_paths <- paste(Sys.getenv("R_LIBS_USER"), collapse = "|")
+        user_dir <- grep(userlib_paths, current_paths)
+        sub_dir <- grep(getwd(), userlib_paths)
+        # keep paths that are subdirectories in .libPaths()
+        keep_paths <- setdiff(user_dir, sub_dir)
+        new_paths <- current_paths[-]
         .libPaths(new_paths)
         rm(current_paths, userlib_paths, user_dir, new_paths)
     }
