@@ -4,7 +4,7 @@ FROM nixos/nix:latest AS builder
 #    --extra-experimental-features "nix-command flakes" \
 #    --option filter-syscalls false \
 #    build
-RUN nix-shell -p 'rWrapper.override{packages = [ rPackages.dplyr ];}'
+RUN nix-shell -p R rPackages.ggplot2 rPackages.pacman 
 
 # FROM mcr.microsoft.com/devcontainers/javascript-node:0-18
 # RUN export DEBIAN_FRONTEND=noninteractive
