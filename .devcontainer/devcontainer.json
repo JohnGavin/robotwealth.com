@@ -5,9 +5,9 @@
 	"build": {
 		"dockerfile": "Dockerfile",
 		"args": {
-		  "DISPLAY": "192.168.55.101"
-		  "DEV_PROJ": "proj"
-		  "DEV": "dev"
+		  "DISPLAY": "192.168.55.101",
+		  "DEV_PROJ": "proj",
+		  "DEV": "dev",
 		  "PROJ": "proj"
 			// Update VARIANT to pick a R version: 4, 4.2, 4.1, 4.0
 			//"VARIANT": "4.2",
