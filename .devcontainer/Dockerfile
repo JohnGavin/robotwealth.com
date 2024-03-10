@@ -1,3 +1,4 @@
 
 FROM nixos/nix 
-CMD ["bash"]
+CMD nix-shell -p 'rWrapper.override{packages = [ rPackages.rix ];}'
+# CMD ["bash"]

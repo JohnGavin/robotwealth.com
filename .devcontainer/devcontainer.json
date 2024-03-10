@@ -3,10 +3,9 @@
 {
 	"name": "R (Community)",
 	"build": {
-		"dockerfile": "Dockerfile" }} 
-		// ,
-		// "args": {
-		//   //"DISPLAY": "192.168.55.101",
+		"dockerfile": "Dockerfile",
+		"args": {
+			"DISPLAY": "192.168.55.101" //,
 		//   //"DEV_PROJ": "proj",
 		//   //"DEV": "dev",
 		//   //"PROJ": "proj"
@@ -18,9 +17,9 @@
 		// 	// Options
 		// 	//"ENABLE_JUPYTER": "true",
 		// 	//"UPGRADE_PACKAGES": "true"
-		// }
+		}
 	// },
-
+}}
 	// // Configure tool-specific properties.
 	// "customizations": {
 	// 	// Configure properties specific to VS Code.
