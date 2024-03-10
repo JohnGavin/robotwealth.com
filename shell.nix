@@ -3,11 +3,12 @@
 pkgs.mkShell {
   # nativeBuildInputs is usually what you want -- tools you need to run
   nativeBuildInputs = with pkgs; [
-    nixpkgs-fmt
-    rnix-lsp
+    #nixpkgs-fmt
+    #rnix-lsp
 
-    R radianWrapper
-    rPackages.ggplot2
+    R
+    #radianWrapper
+    #rPackages.ggplot2
     # rPackages.dplyr rPackages.pacman
 #    python3
 #    python3Packages.ipython
