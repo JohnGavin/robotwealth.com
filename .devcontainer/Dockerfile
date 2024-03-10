@@ -1,4 +1,3 @@
 
 FROM nixos/nix 
-RUN nix-shell 
-
+CMD ["bash"]
