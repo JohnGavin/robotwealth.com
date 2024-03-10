@@ -1,6 +1,12 @@
-FROM nixos/nix 
+FROM nixos/nix:latest AS builder
+
+RUN nix \
+    --extra-experimental-features "nix-command flakes" \
+    --option filter-syscalls false \
+    build
+
 # FROM mcr.microsoft.com/devcontainers/javascript-node:0-18
-RUN export DEBIAN_FRONTEND=noninteractive
+# RUN export DEBIAN_FRONTEND=noninteractive
 #RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #    && apt-get -y install git
 
