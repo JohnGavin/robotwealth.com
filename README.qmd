@@ -11,7 +11,7 @@ description: targets, webR and dashboard
 format:
   dashboard:
     orientation: rows
-    theme: default
+    # theme: default
     # expandable: true
     # scrolling: false
     nav-buttons:
@@ -44,6 +44,7 @@ format:
     css: styles.css
 output: github_document # /html_document # NB: OLD Rmarkdown
 filters:
+  # https://r-posts.com/add-shiny-in-quarto-blog-with-shinylive/
   - webr
 webr:
   packages:
@@ -100,6 +101,24 @@ Some text
 [in HTML.]{.content-visible when-format="html"}
 [in PDF.]{.content-visible when-format="pdf"}
 [in GH markdown]{.content-visible when-format="gmd"}
+
+# About
+
+## Row {.flow}
+
+::: card {.content-visible when-format="gmd"}
+
+::: card-header
+About
+:::
+
+::: card-body
+This dashboard presents 
+:::
+
+:::
+
+# Not About
 
 ::: {.content-visible when-format="gmd"}
 <!-- 
