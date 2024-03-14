@@ -19,8 +19,10 @@ stables_llama_lst_61b26602|branch|stables_llama_lst|0|dispatched
 stables_llama_lst_61b26602|branch|stables_llama_lst|0|completed
 stables_llama_lst|pattern|stables_llama_lst|1|completed
 perps_all|stem|perps_all|0|skipped
-stables_llama|stem|stables_llama|0|skipped
-perps_ex_stbls|stem|perps_ex_stbls|0|skipped
+stables_llama|stem|stables_llama|0|dispatched
+stables_llama|stem|stables_llama|0|completed
+perps_ex_stbls|stem|perps_ex_stbls|0|dispatched
+perps_ex_stbls|stem|perps_ex_stbls|0|completed
 universe|stem|universe|0|skipped
 features|stem|features|0|skipped
 gg_univ_size|stem|gg_univ_size|0|skipped
