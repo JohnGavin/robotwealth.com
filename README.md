@@ -13,7 +13,29 @@
 
 Some text
 
-# End page 1
+# About
+
+## Row
+
+::: card {.content-visible when-format=“gmd”}
+
+<div class="card-header">
+
+About
+
+</div>
+
+<div class="card-body">
+
+This dashboard presents
+
+</div>
+
+:::
+
+# Not About
+
+# End pagee 1
 
 <div class="block" fill="luma(230)" inset="8pt" radius="4pt">
 

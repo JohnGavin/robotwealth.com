@@ -246,8 +246,26 @@
 
 Some text
 
-= End page 1
-<end-page-1>
+= About
+<about>
+== Row
+<row>
+::: card {.content-visible when-format\="gmd"}
+
+#block[
+About
+
+]
+#block[
+This dashboard presents
+
+]
+:::
+
+= Not About
+<not-about>
+= End pagee 1
+<end-pagee-1>
 #block(
 fill:luma(230),
 inset:8pt,
